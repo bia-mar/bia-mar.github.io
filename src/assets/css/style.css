@@ -4,3 +4,29 @@ body{
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Recipe Page */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .step {
+    grid-template-columns: 1fr;
+  }
+
+}
