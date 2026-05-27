@@ -1,11 +1,179 @@
-body{
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ----------------------------------------- */
+/* ----------------- FONTS ----------------- */
+/* ----------------------------------------- */
+@font-face {
+  font-family: "Main"; /* Inter Regular */
+  src: url("../fonts/main.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* Recipe Page */
+@font-face {
+  font-family: "Main"; /* Inter Italic */
+  src: url("../fonts/main-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roman"; /* Baskervville */
+  src: url("../fonts/roman.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roman"; /* Baskervville Italic */
+  src: url("../fonts/roman-italic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Monospace"; /* Cutive Mono */
+  src: url("../fonts/monospace.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Chinese"; /* 余思源颜黄体 */
+  src: url("../fonts/chinese.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Persian"; /* Gulzar */
+  src: url("../fonts/persian.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Thai"; /* Charm Bold */
+  src: url("../fonts/thai.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+    --white: #f7f7f7;
+    --Main-font: "Main", "Inter", "Arial", "sans-serif";
+    --Roman-font: "Roman", "Baskervville", "Times New Roman", "serif";
+    --Monospace-font: "Monospace", "Cutive Mono", "Courier New", "monospace";
+    --Chinese-font: "Chinese", "余思源颜黄体", "SimSun", "宋体", "serif";
+    --Persian-font: "Persian", "Gulzar", "Tahoma", "serif";
+    --Thai-font: "Thai", "Charm Bold", "serif";
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+p,
+p a,
+li,
+li a {
+  line-height: 1.5;
+}
+
+body{
+    font-family: var(--Main-font);
+    background-color: var(--white);
+}
+
+h2.chinese-font,
+h2.persian-font{
+    font-size: 5.6rem;
+    /* All of these titles require the same exact height, while  */
+    height: 7rem;
+    line-height: 7rem;
+}
+
+h2.thai-font {
+    font-size: 4.2rem;
+    height: 6rem;
+    /* These titles are being treated as readable images, they require specific positioning, that's why I am usuing these weird methods to make sure that the fonts all have the same visual weight and are appropriately aligned within a same-size container */
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    line-height: 0;
+}
+
+h2.roman-font {
+    font-size: 3.15rem;
+    font-style: italic;
+    /* These titles are being treated as readable images, they require specific positioning, that's why I am usuing these weird methods to make sure that the fonts all have the same visual weight and are appropriately aligned within a same-size container */
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.chinese-font {
+    font-family: var(--Chinese-font);
+}
+.roman-font {
+    font-family: var(--Roman-font);
+}
+.persian-font {
+    font-family: var(--Persian-font);
+}
+.thai-font {
+    font-family: var(--Thai-font);
+}
+
+h1 {
+    font-size: 2.37rem;
+}
+h2 {
+    font-size: 1.78rem;
+}
+h3 {
+    font-size: 1.33rem;
+}
+h4,
+h5,
+h6,
+p,
+li,
+a {
+    font-size: 1rem;
+}
+
+
+
+/* ----------------------------------------- */
+/* --------------- MAIN PAGE --------------- */
+/* ----------------------------------------- */
+
+
+
+
+/* ----------------------------------------- */
+/* -------------- RECIPE PAGE -------------- */
+/* ----------------------------------------- */
 .recipe-grid {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
