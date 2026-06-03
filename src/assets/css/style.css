@@ -18,6 +18,22 @@
 }
 
 @font-face {
+  font-family: "Main"; /* Inter Regular */
+  src: url("../fonts/main.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Main"; /* Inter Italic */
+  src: url("../fonts/main-italic.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Roman"; /* Baskervville */
   src: url("../fonts/roman.woff2") format("woff2");
   font-weight: 600;
@@ -68,6 +84,7 @@
 :root {
     --white: #f7f7f7;
     --black: #000000;
+    --grey: #E3E1E6;
     --transparent-black: rgba(0, 0, 0, 0.2);
 
     --Main-font: "Main", "Inter", "Arial", "sans-serif";
@@ -76,6 +93,11 @@
     --Chinese-font: "Chinese", "余思源颜黄体", "SimSun", "宋体", "serif";
     --Persian-font: "Persian", "Gulzar", "Tahoma", "serif";
     --Thai-font: "Thai", "Charm Bold", "serif";
+
+    --font-size-big: 2.37rem;
+    --font-size-medium: 1.78rem;
+    --font-size-small: 1.33rem;
+    --font-size-text: 1rem;
 }
 
 a,
@@ -109,29 +131,21 @@ body{
 h2.chinese-font,
 h2.persian-font{
     font-size: 5.6rem;
-    /* All of these titles require the same exact height, while  */
-    height: 7rem;
-    line-height: 7rem;
+    padding: 12px;
+    padding-left: 12px;
 }
 
 h2.thai-font {
     font-size: 4.2rem;
-    height: 6rem;
-    /* These titles are being treated as readable images, they require specific positioning, that's why I am usuing these weird methods to make sure that the fonts all have the same visual weight and are appropriately aligned within a same-size container */
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    line-height: 0;
+    padding-right: 12px;
+    padding-left: 12px;
 }
 
 h2.roman-font {
     font-size: 3.15rem;
     font-style: italic;
-    /* These titles are being treated as readable images, they require specific positioning, that's why I am usuing these weird methods to make sure that the fonts all have the same visual weight and are appropriately aligned within a same-size container */
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    line-height: 0;
+    padding-right: 12px;
+    padding-left: 12px;
 }
 
 .chinese-font {
@@ -148,13 +162,13 @@ h2.roman-font {
 }
 
 h1 {
-    font-size: 2.37rem;
+    font-size: var(--font-size-big);
 }
 h2 {
-    font-size: 1.78rem;
+    font-size: var(--font-size-medium);
 }
 h3 {
-    font-size: 1.33rem;
+    font-size: var(--font-size-small);
 }
 h4,
 h5,
@@ -162,7 +176,13 @@ h6,
 p,
 li,
 a {
-    font-size: 1rem;
+    font-size: var(--font-size-text);
+}
+
+a,
+p,
+li {
+  font-weight: 200;
 }
 
 header {
@@ -214,14 +234,40 @@ main:has(#images) {
   flex-direction: column;
   align-items: start;
   background-color: var(--white);
-  padding: 1rem;
+  padding: 16px;
+  gap: 16px;
   width: 380px;
   height: 80%;
   overflow: hidden;
 }
 
-.recipe-card img {
-  mix-blend-mode: multiply;
+.recipe-card div {
+  display: flex;
+  flex-direction: row;
+}
+
+.tags h4,
+.recipe-card h3 {
+  background-color: var(--grey);
+  font-family: var(--Monospace-font);
+  font-size: var(--font-size-text);
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.recipe-card h2,
+.recipe-card p {
+  background-color: var(--grey);
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.recipe-card p {
+  width: 70%;
+}
+
+.recipe-card div {
+  width: 100%;
 }
 
 li:has(.recipe-card) {
