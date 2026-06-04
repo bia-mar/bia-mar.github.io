@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ----------------------------------------- */
 /* ----------------- FONTS ----------------- */
 /* ----------------------------------------- */
@@ -8,7 +9,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Main"; /* Inter Italic */
   src: url("../fonts/main-italic.woff2") format("woff2");
@@ -16,7 +16,6 @@
   font-style: italic;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Main"; /* Inter Regular */
   src: url("../fonts/main.woff2") format("woff2");
@@ -24,7 +23,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Main"; /* Inter Italic */
   src: url("../fonts/main-italic.woff2") format("woff2");
@@ -32,7 +30,6 @@
   font-style: italic;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Roman"; /* Baskervville */
   src: url("../fonts/roman.woff2") format("woff2");
@@ -40,7 +37,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Roman"; /* Baskervville Italic */
   src: url("../fonts/roman-italic.woff2") format("woff2");
@@ -48,7 +44,6 @@
   font-style: italic;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Monospace"; /* Cutive Mono */
   src: url("../fonts/monospace.woff2") format("woff2");
@@ -56,7 +51,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Chinese"; /* 余思源颜黄体 */
   src: url("../fonts/chinese.woff2") format("woff2");
@@ -64,7 +58,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Persian"; /* Gulzar */
   src: url("../fonts/persian.woff2") format("woff2");
@@ -72,7 +65,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: "Thai"; /* Charm Bold */
   src: url("../fonts/thai.woff2") format("woff2");
@@ -80,40 +72,38 @@
   font-style: normal;
   font-display: swap;
 }
-
 :root {
-    --white: #f7f7f7;
-    --black: #000000;
-    --grey: #E3E1E6;
-    --transparent-black: rgba(0, 0, 0, 0.2);
-
-    --Main-font: "Main", "Inter", "Arial", "sans-serif";
-    --Roman-font: "Roman", "Baskervville", "Times New Roman", "serif";
-    --Monospace-font: "Monospace", "Cutive Mono", "Courier New", "monospace";
-    --Chinese-font: "Chinese", "余思源颜黄体", "SimSun", "宋体", "serif";
-    --Persian-font: "Persian", "Gulzar", "Tahoma", "serif";
-    --Thai-font: "Thai", "Charm Bold", "serif";
-
-    --font-size-big: 2.37rem;
-    --font-size-medium: 1.78rem;
-    --font-size-small: 1.33rem;
-    --font-size-text: 1rem;
+  --white: #f7f7f7;
+  --black: #000000;
+  --grey: #E3E1E6;
+  --transparent-black: rgba(0, 0, 0, 0.2);
+  --Main-font: "Main", "Inter", "Arial", "sans-serif";
+  --Roman-font: "Roman", "Baskervville", "Times New Roman", "serif";
+  --Monospace-font: "Monospace", "Cutive Mono", "Courier New", "monospace";
+  --Chinese-font: "Chinese", "余思源颜黄体", "SimSun", "宋体", "serif";
+  --Persian-font: "Persian", "Gulzar", "Tahoma", "serif";
+  --Thai-font: "Thai", "Charm Bold", "serif";
+  --font-size-big: 2.37rem;
+  --font-size-medium: 1.78rem;
+  --font-size-small: 1.33rem;
+  --font-size-text: 1rem;
 }
 
 a,
 a:visited,
 a:hover,
 a:active {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    font-weight: inherit;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 p,
@@ -123,60 +113,67 @@ li a {
   line-height: 1.5;
 }
 
-body{
-    font-family: var(--Main-font);
-    background-color: var(--white);
+body {
+  font-family: var(--Main-font);
+  background-color: var(--white);
 }
+
 /* TODO: FIXING LINE HEIGHT */
 h2.chinese-font,
-h2.persian-font{
-    font-size: 5.6rem;
-    padding: 12px;
-    padding-left: 12px;
+h2.persian-font {
+  font-size: 5.6rem;
+  padding: 12px;
+  padding-left: 12px;
 }
 
 h2.thai-font {
-    font-size: 4.2rem;
-    padding-right: 12px;
-    padding-left: 12px;
+  font-size: 4.2rem;
+  padding-right: 12px;
+  padding-left: 12px;
 }
 
 h2.roman-font {
-    font-size: 3.15rem;
-    font-style: italic;
-    padding-right: 12px;
-    padding-left: 12px;
+  font-size: 3.15rem;
+  font-style: italic;
+  padding-right: 12px;
+  padding-left: 12px;
 }
 
 .chinese-font {
-    font-family: var(--Chinese-font);
+  font-family: var(--Chinese-font);
 }
+
 .roman-font {
-    font-family: var(--Roman-font);
+  font-family: var(--Roman-font);
 }
+
 .persian-font {
-    font-family: var(--Persian-font);
+  font-family: var(--Persian-font);
 }
+
 .thai-font {
-    font-family: var(--Thai-font);
+  font-family: var(--Thai-font);
 }
 
 h1 {
-    font-size: var(--font-size-big);
+  font-size: var(--font-size-big);
 }
+
 h2 {
-    font-size: var(--font-size-medium);
+  font-size: var(--font-size-medium);
 }
+
 h3 {
-    font-size: var(--font-size-small);
+  font-size: var(--font-size-small);
 }
+
 h4,
 h5,
 h6,
 p,
 li,
 a {
-    font-size: var(--font-size-text);
+  font-size: var(--font-size-text);
 }
 
 a,
@@ -189,16 +186,51 @@ header {
   position: fixed;
   top: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
+/* ----------------------------------------- */
+/* -------------- RECIPE PAGE -------------- */
+/* ----------------------------------------- */
+.recipe-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2rem 2fr 2rem 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
 
+.step {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 80px 1rem 1fr;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .recipe-grid {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+  .step {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+}
 /* ----------------------------------------- */
 /* --------------- MAIN PAGE --------------- */
 /* ----------------------------------------- */
 main:has(#images) {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -215,13 +247,19 @@ main:has(#images) {
   position: absolute;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   z-index: 10;
 }
 
 #images, #recipes, #recipes ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #recipes ul {
@@ -230,9 +268,16 @@ main:has(#images) {
 }
 
 .recipe-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   background-color: var(--white);
   padding: 16px;
   gap: 16px;
@@ -242,8 +287,13 @@ main:has(#images) {
 }
 
 .recipe-card div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .tags h4,
@@ -272,13 +322,18 @@ main:has(#images) {
 
 li:has(.recipe-card) {
   height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: sticky;
   top: 5vh;
 }
-
 
 img { /* TODO: DELETE */
   width: 200px;
@@ -288,41 +343,15 @@ img { /* TODO: DELETE */
 #images img {
   width: 100%;
   height: 100vh;
-  object-fit: cover;
-  object-position: center;
-  flex-shrink: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .flag {
-  height:1.5rem;
+  height: 1.5rem;
   width: auto;
-}
-
-
-/* ----------------------------------------- */
-/* -------------- RECIPE PAGE -------------- */
-/* ----------------------------------------- */
-.recipe-grid {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.step {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 1rem;
-}
-
-
-@media (max-width: 768px) {
-  .recipe-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .step {
-    grid-template-columns: 1fr;
-  }
-
 }

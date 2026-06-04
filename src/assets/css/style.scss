@@ -1,0 +1,191 @@
+/* ----------------------------------------- */
+/* ----------------- FONTS ----------------- */
+/* ----------------------------------------- */
+@font-face {
+  font-family: "Main"; /* Inter Regular */
+  src: url("../fonts/main.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Main"; /* Inter Italic */
+  src: url("../fonts/main-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Main"; /* Inter Regular */
+  src: url("../fonts/main.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Main"; /* Inter Italic */
+  src: url("../fonts/main-italic.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roman"; /* Baskervville */
+  src: url("../fonts/roman.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roman"; /* Baskervville Italic */
+  src: url("../fonts/roman-italic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Monospace"; /* Cutive Mono */
+  src: url("../fonts/monospace.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Chinese"; /* 余思源颜黄体 */
+  src: url("../fonts/chinese.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Persian"; /* Gulzar */
+  src: url("../fonts/persian.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Thai"; /* Charm Bold */
+  src: url("../fonts/thai.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+    --white: #f7f7f7;
+    --black: #000000;
+    --grey: #E3E1E6;
+    --transparent-black: rgba(0, 0, 0, 0.2);
+
+    --Main-font: "Main", "Inter", "Arial", "sans-serif";
+    --Roman-font: "Roman", "Baskervville", "Times New Roman", "serif";
+    --Monospace-font: "Monospace", "Cutive Mono", "Courier New", "monospace";
+    --Chinese-font: "Chinese", "余思源颜黄体", "SimSun", "宋体", "serif";
+    --Persian-font: "Persian", "Gulzar", "Tahoma", "serif";
+    --Thai-font: "Thai", "Charm Bold", "serif";
+
+    --font-size-big: 2.37rem;
+    --font-size-medium: 1.78rem;
+    --font-size-small: 1.33rem;
+    --font-size-text: 1rem;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+p,
+p a,
+li,
+li a {
+  line-height: 1.5;
+}
+
+body{
+    font-family: var(--Main-font);
+    background-color: var(--white);
+}
+/* TODO: FIXING LINE HEIGHT */
+h2.chinese-font,
+h2.persian-font{
+    font-size: 5.6rem;
+    padding: 12px;
+    padding-left: 12px;
+}
+
+h2.thai-font {
+    font-size: 4.2rem;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+h2.roman-font {
+    font-size: 3.15rem;
+    font-style: italic;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.chinese-font {
+    font-family: var(--Chinese-font);
+}
+.roman-font {
+    font-family: var(--Roman-font);
+}
+.persian-font {
+    font-family: var(--Persian-font);
+}
+.thai-font {
+    font-family: var(--Thai-font);
+}
+
+h1 {
+    font-size: var(--font-size-big);
+}
+h2 {
+    font-size: var(--font-size-medium);
+}
+h3 {
+    font-size: var(--font-size-small);
+}
+h4,
+h5,
+h6,
+p,
+li,
+a {
+    font-size: var(--font-size-text);
+}
+
+a,
+p,
+li {
+  font-weight: 200;
+}
+
+@import "header";
+@import "footer";
+@import "recipes";
+@import "landing";
