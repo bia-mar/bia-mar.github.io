@@ -93,11 +93,11 @@
   --font-size-text: 1rem;
   --angle: -4deg;
   --other-angle: 4deg;
-  --aspect-ratio: 0.75; /* 3:4 ratio (Width divided by Height) */
+  --aspect-ratio: 0.65; /* 3:4 ratio (Width divided by Height) */
   --aspect-ratio-2: 1.777; /* 16:9 ratio (Width divided by Height) */
 }
 
-.recipe-card h3:nth-of-type(2), .recipe-card div:nth-of-type(2) img {
+.recipe-card h3:nth-of-type(2), .flag, .recipe-card div:nth-of-type(2) img {
   border: 0.5px solid var(--dark-grey);
 }
 
@@ -343,6 +343,10 @@ h4.tag {
   padding-left: 8px;
 }
 
+.recipe-card h2 {
+  width: 100%;
+}
+
 .recipe-card p {
   padding-bottom: 4px;
   padding-top: 4px;
@@ -424,10 +428,12 @@ li:has(.recipe-card) {
 
 .recipe-card h3:nth-of-type(2) {
   position: absolute;
-  bottom: 60px;
-  left: 60px;
-  -webkit-transform: rotate(var(--angle));
-          transform: rotate(var(--angle));
+  bottom: 40px;
+  left: 35%;
+  -webkit-transform: translateX(calc(-50% + 2px)) rotate(var(--angle));
+          transform: translateX(calc(-50% + 2px)) rotate(var(--angle));
+  -webkit-transform-origin: center;
+          transform-origin: center;
   background-color: var(--white);
   text-transform: uppercase;
 }
