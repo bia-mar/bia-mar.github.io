@@ -97,6 +97,16 @@
   --aspect-ratio-2: 1.777; /* 16:9 ratio (Width divided by Height) */
 }
 
+html {
+  font-size: 16px; /* ensure 1rem = 16px across devices */
+  -webkit-text-size-adjust: 100%; /* prevent iOS from auto-resizing text */
+}
+
+@media (max-width: 1000px) {
+  html {
+    font-size: 20px; /* TODO: NOT WORKING slightly larger rem on small screens for readability */
+  }
+}
 .recipe-card h3:nth-of-type(2), .flag, .recipe-card div:nth-of-type(2) img {
   border: 0.5px solid var(--dark-grey);
 }
@@ -117,7 +127,6 @@ a:active {
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: inherit;
   font-weight: inherit;
 }
 
