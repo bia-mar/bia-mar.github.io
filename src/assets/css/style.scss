@@ -81,10 +81,17 @@
   font-display: swap;
 }
 
+
+
+/* ----------------------------------------- */
+/* --------------- VARIABLES --------------- */
+/* ----------------------------------------- */
+
 :root {
     --white: #f7f7f7;
     --black: #000000;
     --grey: #E3E1E6;
+    --dark-grey: #C8BFD6;
     --transparent-black: rgba(0, 0, 0, 0.2);
 
     --Main-font: "Main", "Inter", "Arial", "sans-serif";
@@ -98,7 +105,22 @@
     --font-size-medium: 1.78rem;
     --font-size-small: 1.33rem;
     --font-size-text: 1rem;
+
+    --angle: -4deg;
+    --other-angle: 4deg;
+    --aspect-ratio: 0.75;  /* 3:4 ratio (Width divided by Height) */
+    --aspect-ratio-2: 1.777;  /* 16:9 ratio (Width divided by Height) */
 }
+
+%outline {
+  border: 0.5px solid var(--dark-grey)
+}
+
+
+
+/* ----------------------------------------- */
+/* ------------ GENERAL RULES -------------- */
+/* ----------------------------------------- */
 
 a,
 a:visited,

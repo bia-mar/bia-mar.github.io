@@ -72,10 +72,14 @@
   font-style: normal;
   font-display: swap;
 }
+/* ----------------------------------------- */
+/* --------------- VARIABLES --------------- */
+/* ----------------------------------------- */
 :root {
   --white: #f7f7f7;
   --black: #000000;
   --grey: #E3E1E6;
+  --dark-grey: #C8BFD6;
   --transparent-black: rgba(0, 0, 0, 0.2);
   --Main-font: "Main", "Inter", "Arial", "sans-serif";
   --Roman-font: "Roman", "Baskervville", "Times New Roman", "serif";
@@ -87,8 +91,19 @@
   --font-size-medium: 1.78rem;
   --font-size-small: 1.33rem;
   --font-size-text: 1rem;
+  --angle: -4deg;
+  --other-angle: 4deg;
+  --aspect-ratio: 0.75; /* 3:4 ratio (Width divided by Height) */
+  --aspect-ratio-2: 1.777; /* 16:9 ratio (Width divided by Height) */
 }
 
+.recipe-card h3:nth-of-type(2), .recipe-card div:nth-of-type(2) img {
+  border: 0.5px solid var(--dark-grey);
+}
+
+/* ----------------------------------------- */
+/* ------------ GENERAL RULES -------------- */
+/* ----------------------------------------- */
 a,
 a:visited,
 a:hover,
@@ -283,7 +298,7 @@ main:has(#images) {
   gap: 16px;
   width: 380px;
   height: 80%;
-  overflow: hidden;
+  position: relative;
 }
 
 .recipe-card div {
@@ -305,6 +320,22 @@ main:has(#images) {
   padding-left: 8px;
 }
 
+.tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+h4.tag {
+  background-color: var(--black);
+  color: var(--white);
+  text-transform: uppercase;
+}
+
 .recipe-card h2,
 .recipe-card p {
   background-color: var(--grey);
@@ -313,11 +344,42 @@ main:has(#images) {
 }
 
 .recipe-card p {
+  padding-bottom: 4px;
+  padding-top: 4px;
   width: 70%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .recipe-card div {
   width: 100%;
+  gap: 8px;
+}
+
+.recipe-card div:nth-of-type(2) {
+  container-type: size; /* "size" allows us to use both cqw and cqh */
+  width: 100%; /* Ensure the parent fills the card space */
+  height: 100%; /* TODO: CHANGE*/
+  gap: 16px;
+}
+
+.recipe-card div:nth-of-type(2) img {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* Calculate the exact height using 100cqh (100% of container height) */
+  --calculated-h: calc(100cqh / (cos(var(--other-angle)) + (var(--aspect-ratio) * sin(var(--other-angle)))));
+  height: var(--calculated-h);
+  /* Base the width on that exact same container-height calculation */
+  width: calc(var(--calculated-h) * var(--aspect-ratio));
+  --occupied-w: calc((var(--calculated-h) * var(--aspect-ratio) * COS(var(--other-angle))) + (var(--calculated-h) * SIN(var(--other-angle))));
+  --translate-x: calc(var(--occupied-w) - (var(--calculated-h) * var(--aspect-ratio)));
+  /* Updated transform to shift the image right before rotating */
+  -webkit-transform: translateX(var(--translate-x)) rotate(var(--other-angle));
+          transform: translateX(var(--translate-x)) rotate(var(--other-angle));
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
 }
 
 li:has(.recipe-card) {
@@ -335,11 +397,6 @@ li:has(.recipe-card) {
   top: 5vh;
 }
 
-img { /* TODO: DELETE */
-  width: 200px;
-  height: auto;
-}
-
 #images img {
   width: 100%;
   height: 100vh;
@@ -354,4 +411,23 @@ img { /* TODO: DELETE */
 .flag {
   height: 1.5rem;
   width: auto;
+}
+
+.recipe-card h3:nth-of-type(1) {
+  position: absolute;
+  top: -50px;
+  left: -16px;
+  -webkit-transform: rotate(var(--angle));
+          transform: rotate(var(--angle));
+  text-transform: uppercase;
+}
+
+.recipe-card h3:nth-of-type(2) {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  -webkit-transform: rotate(var(--angle));
+          transform: rotate(var(--angle));
+  background-color: var(--white);
+  text-transform: uppercase;
 }

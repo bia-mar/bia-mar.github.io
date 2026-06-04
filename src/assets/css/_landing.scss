@@ -43,7 +43,9 @@ main:has(#images) {
   gap: 16px;
   width: 380px;
   height: 80%;
-  overflow: hidden;
+  position: relative;
+//  TODO: DELETE /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
+//   box-shadow: 0 0 0px 200px rgba(0, 0, 0, 0.50);
 }
 
 .recipe-card div {
@@ -60,6 +62,17 @@ main:has(#images) {
   padding-left: 8px;
 }
 
+.tags {
+  display: flex;
+  flex-direction: row;
+}
+
+h4.tag {
+    background-color: var(--black);
+    color: var(--white);
+    text-transform: uppercase;
+}
+
 .recipe-card h2,
 .recipe-card p {
   background-color: var(--grey);
@@ -68,11 +81,43 @@ main:has(#images) {
 }
 
 .recipe-card p {
+  padding-bottom: 4px;
+  padding-top: 4px;
   width: 70%;
+  flex-shrink: 0;
 }
 
 .recipe-card div {
   width: 100%;
+  gap: 8px;
+}
+
+.recipe-card div:nth-of-type(2) {
+  container-type: size; /* "size" allows us to use both cqw and cqh */
+  width: 100%;          /* Ensure the parent fills the card space */
+  height: 100%; /* TODO: CHANGE*/
+  gap:16px;
+}
+
+
+.recipe-card div:nth-of-type(2) img {
+    flex-shrink: 0;
+    object-fit: cover;
+    @extend %outline;
+
+    /* Calculate the exact height using 100cqh (100% of container height) */
+    --calculated-h: calc(100cqh / (cos(var(--other-angle)) + (var(--aspect-ratio) * sin(var(--other-angle)))));
+    height: var(--calculated-h);
+    
+    /* Base the width on that exact same container-height calculation */
+    width: calc(var(--calculated-h) * var(--aspect-ratio));
+
+    --occupied-w: calc((var(--calculated-h) * var(--aspect-ratio) * COS(var(--other-angle))) + (var(--calculated-h) * SIN(var(--other-angle))));
+    --translate-x: calc(var(--occupied-w) - (var(--calculated-h) * var(--aspect-ratio)));
+
+    /* Updated transform to shift the image right before rotating */
+    transform: translateX(var(--translate-x)) rotate(var(--other-angle));
+    transform-origin: top left;
 }
 
 li:has(.recipe-card) {
@@ -82,12 +127,6 @@ li:has(.recipe-card) {
   justify-content: center;
   position: sticky;
   top: 5vh;
-}
-
-
-img { /* TODO: DELETE */
-  width: 200px;
-  height: auto;
 }
 
 #images img {
@@ -101,4 +140,22 @@ img { /* TODO: DELETE */
 .flag {
   height:1.5rem;
   width: auto;
+}
+
+.recipe-card h3:nth-of-type(1) {
+    position: absolute;
+    top:-50px;
+    left:-16px;
+    transform: rotate(var(--angle));
+    text-transform: uppercase;
+}
+
+.recipe-card h3:nth-of-type(2) {
+    position: absolute;
+    bottom:60px;
+    left:60px;
+    transform: rotate(var(--angle));
+    background-color: var(--white);
+  @extend %outline;
+  text-transform: uppercase;
 }
