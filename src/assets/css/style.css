@@ -377,7 +377,7 @@ h4.tag {
   height: var(--calculated-h);
   /* Base the width on that exact same container-height calculation */
   width: calc(var(--calculated-h) * var(--aspect-ratio));
-  --occupied-w: calc((var(--calculated-h) * var(--aspect-ratio) * COS(var(--other-angle))) + (var(--calculated-h) * SIN(var(--other-angle))));
+  --occupied-w: calc((var(--calculated-h) * var(--aspect-ratio) * cos(var(--other-angle))) + (var(--calculated-h) * sin(var(--other-angle))));
   --translate-x: calc(var(--occupied-w) - (var(--calculated-h) * var(--aspect-ratio)));
   /* Updated transform to shift the image right before rotating */
   -webkit-transform: translateX(var(--translate-x)) rotate(var(--other-angle));
@@ -438,7 +438,7 @@ li:has(.recipe-card) {
   text-transform: uppercase;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   #images, #recipes {
     width: 100%;
   }
