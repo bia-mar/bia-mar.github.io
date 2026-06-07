@@ -1,0 +1,28 @@
+.recipe-card:hover {
+  transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.recipe-card {
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header a h1:hover,
+nav a h2:hover {
+    transform: translateY(-2px) scale(1.05);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+header a h1,
+nav a h2 {
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.go-small-transparent {
+  opacity: 0.5;
+  transform: scale(0.5);
+  transition: all 0.3s ease-in-out;
+}
+.in-focus {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}

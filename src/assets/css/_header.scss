@@ -29,3 +29,20 @@ nav a h2 {
   z-index: 1000;
   mix-blend-mode: difference;
 }
+
+@media (max-width: 1000px) {
+  header,
+  #images ~ nav {
+    mix-blend-mode: normal;
+  }
+
+  header h1,
+  nav a h2 {
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+  }
+
+}
+
+  

@@ -248,6 +248,18 @@ nav a h2 {
   mix-blend-mode: difference;
 }
 
+@media (max-width: 1000px) {
+  header,
+  #images ~ nav {
+    mix-blend-mode: normal;
+  }
+  header h1,
+  nav a h2 {
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+  }
+}
 /* ----------------------------------------- */
 /* -------------- RECIPE PAGE -------------- */
 /* ----------------------------------------- */
@@ -330,8 +342,7 @@ main:has(#images) {
   background-color: var(--white);
   padding: 16px;
   gap: 16px;
-  width: 380px;
-  max-width: 80%;
+  width: 50vh;
   height: 80%;
   position: relative;
 }
@@ -503,15 +514,68 @@ li:has(.recipe-card) {
     background-color: transparent;
   }
   .recipe-card {
-    max-height: 500px;
+    max-height: 400px;
+    padding-bottom: 0;
+    width: 380px;
   }
   .recipe-card p {
     display: none;
   }
   .recipe-card div:nth-of-type(2) img {
-    -webkit-transform: translateX(8vw) translateY(4px) rotate(var(--other-angle));
-            transform: translateX(8vw) translateY(4px) rotate(var(--other-angle));
+    -webkit-transform: translateX(16px) translateY(20px) rotate(var(--other-angle)) scale(1.1);
+            transform: translateX(16px) translateY(20px) rotate(var(--other-angle)) scale(1.1);
     -webkit-transform-origin: center;
             transform-origin: center;
+    width: 100%;
+    height: auto;
   }
+  .recipe-card h3:nth-of-type(2) {
+    display: none;
+  }
+  .recipe-card h3:nth-of-type(1) {
+    left: 0;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+.recipe-card:hover {
+  -webkit-transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
+          transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
+  -webkit-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.recipe-card {
+  -webkit-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header a h1:hover,
+nav a h2:hover {
+  -webkit-transform: translateY(-2px) scale(1.05);
+          transform: translateY(-2px) scale(1.05);
+  -webkit-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header a h1,
+nav a h2 {
+  -webkit-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.go-small-transparent {
+  opacity: 0.5;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.in-focus {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }

@@ -33,8 +33,7 @@ main:has(#images) {
   background-color: var(--white);
   padding: 16px;
   gap: 16px;
-  width: 380px;
-  max-width: 80%;
+  width: 50vh;
   height: 80%;
   position: relative;
 //  TODO: DELETE /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
@@ -199,7 +198,9 @@ li:has(.recipe-card) {
   }
 
   .recipe-card {
-    max-height: 500px;
+    max-height: 400px;
+    padding-bottom: 0;
+    width: 380px;
   }
 
   .recipe-card p {
@@ -207,8 +208,24 @@ li:has(.recipe-card) {
   }
 
   .recipe-card div:nth-of-type(2) img {
-    transform: translateX(8vw) translateY(4px) rotate(var(--other-angle)) ;
+    transform: translateX(16px) translateY(20px) rotate(var(--other-angle)) scale(1.1);
     transform-origin: center;
+    width: 100%;
+    height: auto;
   }
 
+  .recipe-card h3:nth-of-type(2) {
+    // bottom:-68px;
+    // left:0;
+    // transform: rotate(0);
+    // border: none;
+    // background-color: var(--grey);
+    // font-size: var(--font-size-text);
+    display: none;
+  }
+
+  .recipe-card h3:nth-of-type(1) {
+    left:0;
+    transform: rotate(0);
+  }
 }
