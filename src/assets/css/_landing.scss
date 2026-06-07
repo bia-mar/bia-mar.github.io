@@ -16,14 +16,6 @@ main:has(#images) {
   overflow-x: hidden;
 }
 
-#images ~ nav {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
 #images, #recipes, #recipes ul {
   display: flex;
   flex-direction: column;
@@ -42,6 +34,7 @@ main:has(#images) {
   padding: 16px;
   gap: 16px;
   width: 380px;
+  max-width: 80%;
   height: 80%;
   position: relative;
 //  TODO: DELETE /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
@@ -170,6 +163,29 @@ li:has(.recipe-card) {
 
 
 @media (max-width: 1000px) {
+  :root {
+    --font-size-big: 1.78rem;
+    --font-size-medium: 1.33rem;
+    --font-size-small: 1rem;
+    --font-size-text: 1rem;
+  }
+
+  h2.chinese-font {
+      font-size: 3.6rem;
+  }
+
+  h2.persian-font {
+      font-size: 3rem;
+  }
+
+  h2.thai-font {
+      font-size: 2.2rem;
+  }
+
+  h2.roman-font {
+      font-size: 2.15rem;
+  }
+
   #images, #recipes {
     width: 100%;
   }
@@ -180,6 +196,19 @@ li:has(.recipe-card) {
     left: 0;
     z-index: 3;
     background-color: transparent;
+  }
+
+  .recipe-card {
+    max-height: 500px;
+  }
+
+  .recipe-card p {
+    display: none;
+  }
+
+  .recipe-card div:nth-of-type(2) img {
+    transform: translateX(8vw) translateY(4px) rotate(var(--other-angle)) ;
+    transform-origin: center;
   }
 
 }

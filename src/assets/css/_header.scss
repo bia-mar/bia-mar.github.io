@@ -1,6 +1,31 @@
 header {
   position: fixed;
-  top: 20px;
+  top: 24px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1000;
+  mix-blend-mode: difference;
+}
+
+header h1,
+nav a h2 {
+  font-family: var(--Funky-font);
+  font-size: var(--font-size-medium);
+  color: var(--black);
+  background-color: var(--white);
+  font-variant: lowercase;
+  @extend %outline;
+}
+
+nav a h2 {
+  font-size: var(--font-size-small);
+}
+
+#images ~ nav {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  mix-blend-mode: difference;
 }

@@ -18,6 +18,14 @@
 }
 
 @font-face {
+  font-family: "Funky"; /* Autour One */
+  src: url("../fonts/funky.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Main"; /* Inter Regular */
   src: url("../fonts/main.woff2") format("woff2");
   font-weight: 200;
@@ -95,6 +103,7 @@
     --transparent-black: rgba(0, 0, 0, 0.2);
 
     --Main-font: "Main", "Inter", "Arial", "sans-serif";
+    --Funky-font: "Funky", "Autour One", "Roman", "Baskervville", "Times New Roman", "serif";
     --Roman-font: "Roman", "Baskervville", "Times New Roman", "serif";
     --Monospace-font: "Monospace", "Cutive Mono", "Courier New", "monospace";
     --Chinese-font: "Chinese", "余思源颜黄体", "SimSun", "宋体", "serif";
@@ -159,6 +168,7 @@ body{
     font-family: var(--Main-font);
     background-color: var(--white);
 }
+
 /* TODO: FIXING LINE HEIGHT */
 h2.chinese-font,
 h2.persian-font{
