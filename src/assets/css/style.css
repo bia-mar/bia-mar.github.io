@@ -345,6 +345,8 @@ main:has(#images) {
   width: 50vh;
   height: 80%;
   position: relative;
+  -webkit-transform: translateX(-24px);
+          transform: translateX(-24px);
 }
 
 .recipe-card div {
@@ -517,6 +519,9 @@ li:has(.recipe-card) {
     max-height: 400px;
     padding-bottom: 0;
     width: 380px;
+    max-width: 75vw;
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
   }
   .recipe-card p {
     display: none;

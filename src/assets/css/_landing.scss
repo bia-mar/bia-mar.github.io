@@ -36,6 +36,7 @@ main:has(#images) {
   width: 50vh;
   height: 80%;
   position: relative;
+  transform: translateX(-24px);
 //  TODO: DELETE /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
 //   box-shadow: 0 0 0px 200px rgba(0, 0, 0, 0.50);
 }
@@ -201,6 +202,8 @@ li:has(.recipe-card) {
     max-height: 400px;
     padding-bottom: 0;
     width: 380px;
+    max-width: 75vw;
+    transform: translateX(-8px);
   }
 
   .recipe-card p {
@@ -227,5 +230,10 @@ li:has(.recipe-card) {
   .recipe-card h3:nth-of-type(1) {
     left:0;
     transform: rotate(0);
+  }
+
+  a.recipe-card h3,
+  a.recipe-card:nth-of-type(1) {
+    @extend %outline;
   }
 }
