@@ -83,10 +83,10 @@
 /* --------------- VARIABLES --------------- */
 /* ----------------------------------------- */
 :root {
-  --white: #f7f7f7;
+  --white: #f1f0fc;
   --black: #000000;
-  --grey: #E3E1E6;
-  --dark-grey: #C8BFD6;
+  --grey: #ccc9e3;
+  --dark-grey: #a5a5c5;
   --transparent-black: rgba(0, 0, 0, 0.2);
   --Main-font: "Main", "Inter", "Arial", "sans-serif";
   --Funky-font: "Funky", "Autour One", "Roman", "Baskervville", "Times New Roman", "serif";
@@ -115,7 +115,7 @@ html {
     font-size: 20px; /* TODO: NOT WORKING slightly larger rem on small screens for readability */
   }
 }
-.recipe-card h3:nth-of-type(2), .flag, .recipe-card div:nth-of-type(2) img, header h1,
+.recipe-card h3:nth-of-type(2), .recipe-card h3:nth-of-type(1), .flag, .recipe-card div:nth-of-type(2) img, .recipe-card, header h1,
 nav a h2 {
   border: 0.5px solid var(--dark-grey);
 }
