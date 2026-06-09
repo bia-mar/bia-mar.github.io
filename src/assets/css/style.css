@@ -87,6 +87,7 @@
   --black: #000000;
   --grey: #ccc9e3;
   --dark-grey: #a5a5c5;
+  --dark-grey-2: #31316b;
   --transparent-black: rgba(0, 0, 0, 0.2);
   --Main-font: "Main", "Inter", "Arial", "sans-serif";
   --Funky-font: "Funky", "Autour One", "Roman", "Baskervville", "Times New Roman", "serif";
@@ -426,7 +427,7 @@ nav a h2 {
 
 .step-label {
   font-family: var(--Monospace-font);
-  color: var(--dark-grey);
+  color: var(--dark-grey-2);
 }
 
 .step-text {
@@ -454,7 +455,7 @@ nav a h2 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 1rem;
+  gap: 3rem;
   list-style: none;
 }
 
@@ -475,7 +476,7 @@ nav a h2 {
 .note-num {
   font-family: var(--Monospace-font);
   font-size: var(--font-size-text);
-  color: var(--dark-grey);
+  color: var(--dark-grey-2);
 }
 
 .note a {
