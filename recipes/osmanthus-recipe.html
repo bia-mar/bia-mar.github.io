@@ -12,105 +12,152 @@
       <h1>Flower Food</h1>
     </a>
 </header>
-  <main class="recipe-page">
-    <section class="recipe-grid">
-      
-      <!-- Column 1: Recipe Info -->
-      <div class="recipe-info">
-        <h1>桂花糕</h1>
-        <p class="subtitle">Osmanthus Jelly (Gui Hua Gao)</p>
-        
-        <div class="meta">
-          <h3>Servings</h3>
-          <p>10</p>
-        </div>
-        
-        <div class="ingredients">
-          <h3>Ingredients</h3>
-          <ul>
-            <li>10 grams dried osmanthus flower tea (pick out any twigs or dark leaves)</li>
-            <li>20 grams dried wolfberries / goji berries (soaked in hot water)</li>
-            <li>1 konnyaku jelly powder (or agar agar / gelatine — amount as per packet)</li>
-            <li>1 liters water</li>
-            <li>150 grams granulated white sugar (skip if your konnyaku packet already contains sugar)</li>
-          </ul>
+  <!-- Page content: the recipe, then the scroll-through image strip. On desktop
+       the strip's photos glide bottom -> top (CSS scroll-timeline). -->
+  <div class="recipe-scroll">
+    <div class="recipe-pin">
+
+      <main class="recipe-page">
+
+        <!-- Info -->
+        <section class="recipe-info">
+          <h1>桂花糕 <img class="flag" src="/assets/img/flag/cn.svg" alt="Flag of China"></h1>
+
+          <div class="info-card">
+            <p class="subtitle">Osmanthus Jelly (Gui Hua Gao) — a delicate, jewel-toned Chinese jelly perfumed with osmanthus flowers and studded with goji berries.</p>
+
+            <dl class="meta">
+              <dt>Servings</dt>
+              <dd>10</dd>
+            </dl>
+
+            <div class="ingredients">
+              <h2>Ingredients</h2>
+              <ul>
+                <li>10 grams dried osmanthus flower tea (pick out any twigs or dark leaves)</li>
+                <li>20 grams dried wolfberries / goji berries (soaked in hot water)</li>
+                <li>1 konnyaku jelly powder (or agar agar / gelatine — amount as per packet)</li>
+                <li>1 litre water</li>
+                <li>150 grams granulated white sugar (skip if your konnyaku packet already contains sugar)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Steps -->
+        <section class="recipe-steps">
+          <h2 class="column-title">Recipe</h2>
+          <ol>
+            <li class="step">
+              <p class="step-label">Step 1</p>
+              <p class="step-text"><strong>Prep the berries and flowers:</strong> Rinse the goji berries and soak them in a bowl of hot water. Remove any hard dark bits (twigs or leaves) from the osmanthus tea — these will make the jelly gritty and bitter.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 2</p>
+              <p class="step-text"><strong>Brew the osmanthus tea:</strong> Heat 1 litre of water in a pot. Just before it boils, add the osmanthus tea and let it simmer for 5 minutes. The longer it steeps, the more intense the flavour and the more golden the colour — but don't overdo it or it turns bitter.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 3</p>
+              <p class="step-text"><strong>Mix powder and sugar:</strong> While the tea simmers, mix the konnyaku jelly powder with the sugar in a bowl until thoroughly combined. This prevents the powder from clumping when added to the hot liquid. (Skip this step if you're using honey or rock sugar instead.)</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 4</p>
+              <p class="step-text"><strong>Add the setting agent:</strong> Bring the osmanthus tea back to a full boil, then quickly pour in the powder-sugar mixture while whisking continuously. Reduce to a simmer and whisk for 3–4 minutes until all the powder has fully dissolved and no lumps remain. Skim off any foam.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 5</p>
+              <p class="step-text"><strong>Add the goji berries:</strong> Drain the goji berries — do not add the soaking water as it may affect setting. Add the berries to the pot and simmer for another 3 minutes, then turn off the heat.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 6</p>
+              <p class="step-text"><strong>Set the jelly:</strong> Pour the liquid jelly into silicone moulds or a wide shallow container. Stir each mould gently with a toothpick to distribute the berries and flowers evenly. Leave to cool, then refrigerate for at least 180 minutes, ideally overnight. If using a container, cut into squares with a sharp (non-serrated) knife once set.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Notes & tips -->
+        <section class="recipe-notes">
+          <h2 class="column-title">Notes and Tips</h2>
+          <ol>
+            <li class="note">
+              <span class="note-num">1</span>
+              <p class="note-text">Recipe source: <a href="https://www.greedygirlgourmet.com/osmanthus-flower-tea-konnyaku-jelly-%E6%A1%82%E8%8A%B1%E7%B3%95-gui-hua-gao-recipe/" target="_blank" rel="noopener">greedygirlgourmet.com</a></p>
+            </li>
+            <li class="note">
+              <span class="note-num">2</span>
+              <p class="note-text">Use good quality osmanthus tea — mostly flowers, no branches. The quality makes a noticeable difference in flavour.</p>
+            </li>
+            <li class="note">
+              <span class="note-num">3</span>
+              <p class="note-text">Konnyaku powder gives the prettiest, most jewel-toned result; agar agar works well but produces a slightly cloudier jelly.</p>
+            </li>
+            <li class="note">
+              <span class="note-num">4</span>
+              <p class="note-text">Check your konnyaku packet — many brands already include sugar, so you may not need to add any.</p>
+            </li>
+            <li class="note">
+              <span class="note-num">5</span>
+              <p class="note-text">Do not use more than 40g of goji berries per litre of water or the jelly will taste fibrous and may not set properly.</p>
+            </li>
+            <li class="note">
+              <span class="note-num">6</span>
+              <p class="note-text">Safety note: konnyaku jelly is a choking hazard for young children and the elderly — consider using agar agar if serving to them.</p>
+            </li>
+          </ol>
+        </section>
+
+      </main>
+
+      <!-- Image strip — a scroll-through zone; the photos glide bottom -> top -->
+      <div class="image-strip">
+        <div class="strip-stage">
+          <div class="image-track">
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/1.jpg" alt="Osmanthus jelly — photo 1" loading="lazy">
+            <figcaption><span class="shot-step">Step 1</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/2.jpg" alt="Osmanthus jelly — photo 2" loading="lazy">
+            <figcaption><span class="shot-step">Step 2</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/3.jpg" alt="Osmanthus jelly — photo 3" loading="lazy">
+            <figcaption><span class="shot-step">Step 3</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/4.jpg" alt="Osmanthus jelly — photo 4" loading="lazy">
+            <figcaption><span class="shot-step">Step 4</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/5.jpg" alt="Osmanthus jelly — photo 5" loading="lazy">
+            <figcaption><span class="shot-step">Step 5</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/6.jpg" alt="Osmanthus jelly — photo 6" loading="lazy">
+            <figcaption><span class="shot-step">Step 6</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/7.jpg" alt="Osmanthus jelly — photo 7" loading="lazy">
+            <figcaption><span class="shot-step">Step 7</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/8.jpg" alt="Osmanthus jelly — photo 8" loading="lazy">
+            <figcaption><span class="shot-step">Step 8</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/9.jpg" alt="Osmanthus jelly — photo 9" loading="lazy">
+            <figcaption><span class="shot-step">Step 9</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/osmanthus-flower-tea/10.webp" alt="Osmanthus jelly — photo 10" loading="lazy">
+            <figcaption><span class="shot-step">Step 10</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          </div>
         </div>
       </div>
-      
-      <!-- Column 2: Steps -->
-      <div class="recipe-steps">
-        
-        <div class="step" data-step="1">
-          <p class="step-label">Step 1</p>
-          <div class="step-text">
-            <p>Prep the berries and flowers: Rinse 20 grams dried wolfberries / goji berries (soaked in hot water) and soak them in a bowl of hot water. Remove any hard dark bits (twigs or leaves) from 10 grams dried osmanthus flower tea (pick out any twigs or dark leaves) — these will make the jelly gritty and bitter.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="2">
-          <p class="step-label">Step 2</p>
-          <div class="step-text">
-            <p>Brew the osmanthus tea: Heat 1 liters water in a pot. Just before it boils, add 10 grams dried osmanthus flower tea (pick out any twigs or dark leaves) and let it simmer for 5 minutes. The longer it steeps, the more intense the flavour and the more golden the colour — but don't overdo it or it turns bitter.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="3">
-          <p class="step-label">Step 3</p>
-          <div class="step-text">
-            <p>Mix powder and sugar: While the tea simmers, mix 1 konnyaku jelly powder (or agar agar / gelatine — amount as per packet) with 150 grams granulated white sugar (skip if your konnyaku packet already contains sugar) in a bowl until thoroughly combined. This prevents the powder from clumping when added to the hot liquid. (Skip this step if you're using honey or rock sugar instead.)</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="4">
-          <p class="step-label">Step 4</p>
-          <div class="step-text">
-            <p>Add the setting agent: Bring the osmanthus tea back to a full boil, then quickly pour in the powder-sugar mixture while whisking continuously. Reduce to a simmer and whisk for 3–4 minutes until all the powder has fully dissolved and no lumps remain. Skim off any foam.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="5">
-          <p class="step-label">Step 5</p>
-          <div class="step-text">
-            <p>Add the goji berries: Drain 20 grams dried wolfberries / goji berries (soaked in hot water) — do not add the soaking water as it may affect setting. Add the berries to the pot and simmer for another 3 minutes, then turn off the heat.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="6">
-          <p class="step-label">Step 6</p>
-          <div class="step-text">
-            <p>Set the jelly: Pour the liquid jelly into silicone molds or a wide shallow container. Stir each mold gently with a toothpick to distribute the berries and flowers evenly. Leave to cool, then refrigerate for at least 180 minutes, ideally overnight. If using a container, cut into squares with a sharp (non-serrated) knife once set.</p>
-          </div>
-        </div>
-        
-      </div>
-      
-      <!-- Column 3: Anex & comments -->
-      <div class="recipe-tip">
-        <p class="tip">1 Recipe source: <a href="https://www.greedygirlgourmet.com/osmanthus-flower-tea-konnyaku-jelly-%E6%A1%82%E8%8A%B1%E7%B3%95-gui-hua-gao-recipe/" target="_blank">greedygirlgourmet.com</a></p>
-        <p class="tip">2 Use good quality osmanthus tea — mostly flowers, no branches. The quality makes a noticeable difference in flavour.</p>
-        <p class="tip">3 Konnyaku powder gives the prettiest, most jewel-toned result; agar agar works well but produces a slightly cloudier jelly.</p>
-        <p class="tip">4 Check your konnyaku packet — many brands already include sugar, so you may not need to add any.</p>
-        <p class="tip">5 Do not use more than 40g of goji berries per litre of water or the jelly will taste fibrous and may not set properly.</p>
-        <p class="tip">6 Safety note: konnyaku jelly is a choking hazard for young children and elderly — consider using agar agar if serving to them.</p>
-      </div>
-      
-    </section>
-    
-    <!-- Vertical Image Strip -->
-    <section class="image-strip">
-      <img src="/assets/img/osmanthus-flower-tea/1.jpg" alt="Step 1" data-film-step="1">
-      <img src="/assets/img/osmanthus-flower-tea/2.jpg" alt="Step 2" data-film-step="2">
-      <img src="/assets/img/osmanthus-flower-tea/3.jpg" alt="Step 3" data-film-step="3">
-      <img src="/assets/img/osmanthus-flower-tea/4.jpg" alt="Step 4" data-film-step="4">
-      <img src="/assets/img/osmanthus-flower-tea/5.jpg" alt="Step 5" data-film-step="5">
-      <img src="/assets/img/osmanthus-flower-tea/6.jpg" alt="Step 6" data-film-step="6">
-      <img src="/assets/img/osmanthus-flower-tea/7.jpg" alt="Step 7" data-film-step="7">
-      <img src="/assets/img/osmanthus-flower-tea/8.jpg" alt="Step 8" data-film-step="8">
-      <img src="/assets/img/osmanthus-flower-tea/9.jpg" alt="Step 9" data-film-step="9">
-      <img src="/assets/img/osmanthus-flower-tea/10.webp" alt="Step 10" data-film-step="10">
-    </section>
-    
-  </main>
+
+    </div>
+  </div>
 
 <footer>
     <p>All these recipes have been foraged, stolen. Just like the flowers they use.</p>

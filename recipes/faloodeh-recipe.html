@@ -12,142 +12,174 @@
       <h1>Flower Food</h1>
     </a>
 </header>
-  <main class="recipe-page">
-    <section class="recipe-grid">
-      
-      <!-- Column 1: Recipe Info -->
-      <div class="recipe-info">
-        <h1>فالوده</h1>
-        <p class="subtitle">Faloodeh (Persian Rose & Lime Granita with Vermicelli) — An ancient Persian frozen dessert — icy, floral and refreshing. Crunchy vermicelli noodles suspended in a rose and lime granita. No special equipment needed.</p>
-        
-        <div class="meta">
-          <h3>Time</h3>
-          <p>5h</p>
-        </div>
-        
-        <div class="meta">
-          <h3>Servings</h3>
-          <p>8</p>
-        </div>
-        
-        <div class="ingredients">
-          <h3>Ingredients</h3>
-          <ul>
-            <li>1.5 cups sugar</li>
-            <li>4.5 cups water</li>
-            <li>0.3 teaspoon sea salt</li>
-            <li>1 lime, juiced</li>
-            <li>2 tablespoons rose water</li>
-            <li>115 grams thin vermicelli rice noodles (white rice only, not wheat)</li>
-            <li>Lime wedges (to serve)</li>
-            <li>Tart cherry syrup (optional, to serve)</li>
-            <li>Slivered pistachios (optional, to serve)</li>
-            <li>Pomegranate seeds (optional, to serve)</li>
-          </ul>
+  <!-- Page content: the recipe, then the scroll-through image strip. On desktop
+       the strip's photos glide bottom -> top (CSS scroll-timeline). -->
+  <div class="recipe-scroll">
+    <div class="recipe-pin">
+
+      <main class="recipe-page">
+
+        <!-- Info -->
+        <section class="recipe-info">
+          <h1>فالوده <img class="flag" src="/assets/img/flag/ir.svg" alt="Flag of Iran"></h1>
+
+          <div class="info-card">
+            <p class="subtitle">Faloodeh (Persian Rose &amp; Lime Granita with Vermicelli) — an ancient Persian frozen dessert: icy, floral and refreshing, with crunchy vermicelli suspended in a rose and lime granita. No special equipment needed.</p>
+
+            <dl class="meta">
+              <dt>Time</dt>
+              <dd>5h</dd>
+            </dl>
+
+            <dl class="meta">
+              <dt>Servings</dt>
+              <dd>8</dd>
+            </dl>
+
+            <div class="ingredients">
+              <h2>Ingredients</h2>
+              <ul>
+                <li>1.5 cups sugar</li>
+                <li>4.5 cups water</li>
+                <li>0.3 teaspoon sea salt</li>
+                <li>1 lime, juiced</li>
+                <li>2 tablespoons rose water</li>
+                <li>115 grams thin vermicelli rice noodles (white rice only, not wheat)</li>
+                <li>Lime wedges (to serve)</li>
+                <li>Tart cherry syrup (optional, to serve)</li>
+                <li>Slivered pistachios (optional, to serve)</li>
+                <li>Pomegranate seeds (optional, to serve)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Steps -->
+        <section class="recipe-steps">
+          <h2 class="column-title">Recipe</h2>
+          <ol>
+            <li class="step">
+              <p class="step-label">Step 1</p>
+              <p class="step-text"><strong>Make the rose syrup:</strong> In a medium saucepan over medium-high heat, combine sugar, water and salt. Bring to a boil, then reduce heat and simmer for 5 minutes, stirring regularly.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 2</p>
+              <p class="step-text"><strong>Add rose water and lime:</strong> Remove from heat and stir in rose water and lime juice. Allow the syrup to cool completely.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 3</p>
+              <p class="step-text"><strong>Freeze the syrup:</strong> Transfer the cooled syrup to a wide, freezer-safe dish and place in the freezer uncovered for 30 minutes.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 4</p>
+              <p class="step-text"><strong>Cook the noodles:</strong> While the syrup freezes, bring a pot of water to the boil. Prepare a bowl of ice water nearby. Cook the vermicelli rice noodles according to packet instructions, then drain and transfer immediately to the ice water to stop cooking.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 5</p>
+              <p class="step-text"><strong>Cut the noodles:</strong> Once fully cooled, drain the noodles again. Use kitchen scissors to cut them into roughly 2.5 cm (1 inch) pieces. Set aside.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 6</p>
+              <p class="step-text"><strong>Combine and freeze:</strong> Remove the syrup from the freezer and stir in the noodles. Return to the freezer uncovered for 90 minutes.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 7</p>
+              <p class="step-text"><strong>First scrape:</strong> Remove from the freezer and use a fork to scrape the mixture from the sides into the centre of the dish, then stir. This creates the granita-style texture and prevents large icy chunks from forming. Return to the freezer for 60 minutes.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 8</p>
+              <p class="step-text"><strong>Second scrape:</strong> Repeat the scraping and stirring process. Return to the freezer for another hour.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 9</p>
+              <p class="step-text"><strong>Third scrape:</strong> Repeat once more. The texture should be coarse and icy with crispy noodles throughout.</p>
+            </li>
+            <li class="step">
+              <p class="step-label">Step 10</p>
+              <p class="step-text"><strong>Serve:</strong> Scrape into small bowls with a fork. Serve with lime wedges and optionally drizzle with tart cherry syrup, and scatter slivered pistachios and/or pomegranate seeds on top.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Notes & tips -->
+        <section class="recipe-notes">
+          <h2 class="column-title">Notes and Tips</h2>
+          <ol>
+            <li class="note">
+              <span class="note-num">1</span>
+              <p class="note-text">Recipe source: <a href="https://www.themediterraneandish.com/faloodeh/" target="_blank" rel="noopener">The Mediterranean Dish</a></p>
+            </li>
+            <li class="note">
+              <span class="note-num">2</span>
+              <p class="note-text">Use white rice vermicelli only — wheat noodles will give an unpleasant flavour and texture.</p>
+            </li>
+            <li class="note">
+              <span class="note-num">3</span>
+              <p class="note-text">Rose water can be overpowering, so start with 2 tbsp and adjust to taste. Orange blossom water works as a substitute.</p>
+            </li>
+            <li class="note">
+              <span class="note-num">4</span>
+              <p class="note-text">Store in the freezer for up to 3 months. Remove 10 minutes before serving and scrape with a fork before ladling into bowls.</p>
+            </li>
+            <li class="note">
+              <span class="note-num">5</span>
+              <p class="note-text">For a quick tart cherry syrup: simmer ¾ cup tart cherry juice over medium-low heat until reduced by half. Cool completely before using.</p>
+            </li>
+          </ol>
+        </section>
+
+      </main>
+
+      <!-- Image strip — a scroll-through zone; the photos glide bottom -> top -->
+      <div class="image-strip">
+        <div class="strip-stage">
+          <div class="image-track">
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/1.jpg" alt="Faloodeh — photo 1" loading="lazy">
+            <figcaption><span class="shot-step">Step 1</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/2.jpg" alt="Faloodeh — photo 2" loading="lazy">
+            <figcaption><span class="shot-step">Step 2</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/3.jpg" alt="Faloodeh — photo 3" loading="lazy">
+            <figcaption><span class="shot-step">Step 3</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/4.jpg" alt="Faloodeh — photo 4" loading="lazy">
+            <figcaption><span class="shot-step">Step 4</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/5.jpg" alt="Faloodeh — photo 5" loading="lazy">
+            <figcaption><span class="shot-step">Step 5</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/6.jpg" alt="Faloodeh — photo 6" loading="lazy">
+            <figcaption><span class="shot-step">Step 6</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/7.jpg" alt="Faloodeh — photo 7" loading="lazy">
+            <figcaption><span class="shot-step">Step 7</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/8.jpg" alt="Faloodeh — photo 8" loading="lazy">
+            <figcaption><span class="shot-step">Step 8</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/9.jpg" alt="Faloodeh — photo 9" loading="lazy">
+            <figcaption><span class="shot-step">Step 9</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="/assets/img/faloodeh-recipe/10.jpg" alt="Faloodeh — photo 10" loading="lazy">
+            <figcaption><span class="shot-step">Step 10</span><span class="shot-legend">Picture legend</span></figcaption>
+          </figure>
+          </div>
         </div>
       </div>
-      
-      <!-- Column 2: Steps -->
-      <div class="recipe-steps">
-        
-        <div class="step" data-step="1">
-          <p class="step-label">Step 1</p>
-          <div class="step-text">
-            <p><strong>Make the rose syrup:</strong> In a medium saucepan over medium-high heat, combine sugar, water and salt. Bring to a boil, then reduce heat and simmer for 5 minutes, stirring regularly.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="2">
-          <p class="step-label">Step 2</p>
-          <div class="step-text">
-            <p><strong>Add rose water and lime:</strong> Remove from heat and stir in rose water and lime juice. Allow the syrup to cool completely.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="3">
-          <p class="step-label">Step 3</p>
-          <div class="step-text">
-            <p><strong>Freeze the syrup:</strong> Transfer the cooled syrup to a wide, freezer-safe dish and place in the freezer uncovered for 30 minutes.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="4">
-          <p class="step-label">Step 4</p>
-          <div class="step-text">
-            <p><strong>Cook the noodles:</strong> While the syrup freezes, bring a pot of water to the boil. Prepare a bowl of ice water nearby. Cook the vermicelli rice noodles according to packet instructions, then drain and transfer immediately to the ice water to stop cooking.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="5">
-          <p class="step-label">Step 5</p>
-          <div class="step-text">
-            <p><strong>Cut the noodles:</strong> Once fully cooled, drain the noodles again. Use kitchen scissors to cut them into roughly 2.5 cm (1 inch) pieces. Set aside.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="6">
-          <p class="step-label">Step 6</p>
-          <div class="step-text">
-            <p><strong>Combine and freeze:</strong> Remove the syrup from the freezer and stir in the noodles. Return to the freezer uncovered for 90 minutes.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="7">
-          <p class="step-label">Step 7</p>
-          <div class="step-text">
-            <p><strong>First scrape:</strong> Remove from the freezer and use a fork to scrape the mixture from the sides into the centre of the dish, then stir. This creates the granita-style texture and prevents large icy chunks from forming. Return to the freezer for 60 minutes.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="8">
-          <p class="step-label">Step 8</p>
-          <div class="step-text">
-            <p><strong>Second scrape:</strong> Repeat the scraping and stirring process. Return to the freezer for another hour.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="9">
-          <p class="step-label">Step 9</p>
-          <div class="step-text">
-            <p><strong>Third scrape:</strong> Repeat once more. The texture should be coarse and icy with crispy noodles throughout.</p>
-          </div>
-        </div>
-        
-        <div class="step" data-step="10">
-          <p class="step-label">Step 10</p>
-          <div class="step-text">
-            <p><strong>Serve:</strong> Scrape into small bowls with a fork. Serve with lime wedges and optionally drizzle with tart cherry syrup, and scatter slivered pistachios and/or pomegranate seeds on top.</p>
-          </div>
-        </div>
-        
-      </div>
-      
-      <!-- Column 3: Anex & comments -->
-      <div class="recipe-tip">
-        <p class="tip">Recipe source: <a href="https://www.themediterraneandish.com/faloodeh/" target="_blank">The Mediterranean Dish</a></p>
-        <p class="tip">Use white rice vermicelli only — wheat noodles will give an unpleasant flavour and texture.</p>
-        <p class="tip">Rose water can be overpowering, so start with 2 tbsp and adjust to taste. Orange blossom water works as a substitute.</p>
-        <p class="tip">Store in the freezer for up to 3 months. Remove 10 minutes before serving and scrape with a fork before ladling into bowls.</p>
-        <p class="tip">For a quick tart cherry syrup: simmer ¾ cup tart cherry juice over medium-low heat until reduced by half. Cool completely before using.</p>
-      </div>
-      
-    </section>
-    
-    <!-- Vertical Image Strip -->
-    <section class="image-strip">
-      <img src="/assets/img/faloodeh-recipe/1.jpg" alt="Step 1" data-film-step="1">
-      <img src="/assets/img/faloodeh-recipe/2.jpg" alt="Step 2" data-film-step="2">
-      <img src="/assets/img/faloodeh-recipe/3.jpg" alt="Step 3" data-film-step="3">
-      <img src="/assets/img/faloodeh-recipe/4.jpg" alt="Step 4" data-film-step="4">
-      <img src="/assets/img/faloodeh-recipe/5.jpg" alt="Step 5" data-film-step="5">
-      <img src="/assets/img/faloodeh-recipe/6.jpg" alt="Step 6" data-film-step="6">
-      <img src="/assets/img/faloodeh-recipe/7.jpg" alt="Step 7" data-film-step="7">
-      <img src="/assets/img/faloodeh-recipe/8.jpg" alt="Step 8" data-film-step="8">
-      <img src="/assets/img/faloodeh-recipe/9.jpg" alt="Step 9" data-film-step="9">
-      <img src="/assets/img/faloodeh-recipe/10.jpg" alt="Step 10" data-film-step="10">
-    </section>
-    
-  </main>
+
+    </div>
+  </div>
 
 <footer>
     <p>All these recipes have been foraged, stolen. Just like the flowers they use.</p>
