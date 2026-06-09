@@ -309,22 +309,25 @@ nav a h2 {
 }
 
 .recipe-info h1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 0.6rem;
   font-size: var(--font-size-medium);
   line-height: 1.3;
   background-color: var(--grey);
   padding: 0.2rem 1rem;
 }
 
-.recipe-info h1 .flag {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+/* Recipe titles use the same script fonts as the landing cards; roman (Latin
+   titles) is italic to match. */
+.recipe-info h1.roman-font {
+  font-style: italic;
+}
+
+/* Flag + tag pills row — reuses the landing card's .tags / h4.tag / .flag.
+   gap restores the spacing the card got from its wrapper; line-height: 1.5
+   matches the cards so each pill is the flag's height with its text vertically
+   centred (instead of top-aligned). */
+.recipe-info .tags {
+  gap: 0.5rem;
+  line-height: 1.5;
 }
 
 .info-card {
