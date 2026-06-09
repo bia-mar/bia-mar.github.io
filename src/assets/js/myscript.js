@@ -14,3 +14,47 @@
   window.addEventListener("load", setPinOffset);
   setPinOffset();
 })();
+
+
+
+
+// LANDING PAGE
+var leftBox = document.getElementById('images');
+var rightBox = document.getElementById('recipes');
+
+// prevent infinite loop
+var isScrolling = false;
+
+function handleScroll(scrolledElement, targetElement) {
+  if (!isScrolling) {
+    isScrolling = true;
+
+    // how far the user scrolled (0 to 1)
+    var scrollScrolled = scrolledElement.scrollHeight - scrolledElement.clientHeight;
+    var scrollPercentage = scrolledElement.scrollTop / scrollScrolled;
+
+    // scroll for the target element
+    var scrollTarget = targetElement.scrollHeight - targetElement.clientHeight;
+
+    // target's scroll to the INVERSE percentage
+    targetElement.scrollTop = scrollTarget * (1 - scrollPercentage);
+
+    // Reset the flag on the next animation frame --- requestAnimationFrame is a built-in browser function that tells the browser: "Hey, I want to change something on the screen. Please run this code right before you paint the next frame." 
+    requestAnimationFrame(function() {
+      isScrolling = false;
+    });
+  }
+}
+
+// Event listeners
+leftBox.addEventListener('scroll', function() {
+  handleScroll(leftBox, rightBox);
+});
+
+rightBox.addEventListener('scroll', function() {
+  handleScroll(rightBox, leftBox);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  leftBox.scrollTop = leftBox.scrollHeight - leftBox.clientHeight;
+});
