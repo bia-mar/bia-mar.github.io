@@ -1029,31 +1029,29 @@ li:has(.recipe-card) {
 /* ============================================ */
 /* ABOUT PAGE                                   */
 /* ============================================ */
-body {
-  margin: 0;
-  padding: 0;
-}
-
-/* Full-bleed flower-field backdrop; the note cards float over it.
-   Mobile (default): cards stacked in a centred column.
-   Desktop: cards scattered + tilted over a single 100vh meadow. */
+/* Flower-field backdrop with the note cards over it.
+   Small screens (default, phones + iPad): a centred, scrollable column.
+   Desktop (>=1200px): cards scattered + tilted over a single 100vh meadow
+   that drifts slowly side to side. */
 .about {
-  height: 100vh;
-  background: url("/assets/img/about.webp");
-  background-size: 150% auto; /* 50% wider than the box → real room to pan */
-  background-position: bottom left;
-  -webkit-animation-name: biamar;
-          animation-name: biamar;
-  -webkit-animation-duration: 10s;
-          animation-duration: 10s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  position: relative;
+  min-height: 100vh;
+  padding: 7rem 1.25rem 3rem; /* top clears the fixed header; sides are gutters */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2.5rem; /* > the float distance, so bobbing never overlaps */
+  background: url("/assets/img/about.webp") center/cover no-repeat;
 }
 
 /* A note card — same outlined-box look as the recipe .info-card. */
-/* apply it to the cards */
 .about-card-1,
 .about-card-2 {
   width: 100%;
@@ -1081,6 +1079,7 @@ body {
   background-color: var(--white);
 }
 
+/* Offset each card's float so they bob out of sync. */
 .about article:nth-of-type(2) {
   -webkit-animation-delay: -1.5s;
           animation-delay: -1.5s;
@@ -1151,12 +1150,21 @@ body {
       flex-shrink: 0;
 }
 
-/* Desktop: free-position the four cards over the meadow, each gently tilted. */
-@media (min-width: 1001px) {
-  .about-card-1 {
-    position: absolute;
-    margin: 0;
+/* Desktop only: scatter + tilt the cards over the meadow and pan the backdrop.
+   Below this width (phones + both iPad orientations) the column above is used,
+   so the fixed-width cards never overlap and the layout stays readable. */
+@media (min-width: 1200px) {
+  .about {
+    display: block;
+    height: 100vh;
+    padding: 0;
+    overflow: hidden;
+    background-size: 150% auto; /* wider than the box → room to pan sideways */
+    background-position: bottom left;
+    -webkit-animation: biamar 10s linear infinite;
+            animation: biamar 10s linear infinite;
   }
+  .about-card-1,
   .about-card-2 {
     position: absolute;
     margin: 0;
@@ -1187,6 +1195,7 @@ body {
   }
 }
 /* ---- Animations ---- */
+/* Slow side-to-side drift of the background (desktop only). */
 @-webkit-keyframes biamar {
   0% {
     background-position: bottom left;
@@ -1203,14 +1212,14 @@ body {
     background-position: bottom right;
   }
 }
-/* the float motion */
+/* Subtle vertical float for the cards. */
 @-webkit-keyframes float {
   from {
     translate: 0 0;
   }
   to {
     translate: 0 -34px;
-  } /* 10px = "just a bit" */
+  }
 }
 @keyframes float {
   from {
@@ -1218,7 +1227,16 @@ body {
   }
   to {
     translate: 0 -34px;
-  } /* 10px = "just a bit" */
+  }
+}
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .about,
+  .about-card-1,
+  .about-card-2 {
+    -webkit-animation: none;
+            animation: none;
+  }
 }
 .recipe-card:hover {
   -webkit-transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
