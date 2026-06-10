@@ -17,9 +17,9 @@
   background: url("/assets/img/about.webp") center / cover no-repeat;
 }
 
-/* A note card — same outlined-box look as the recipe .info-card. */
-.about-card-1,
-.about-card-2 {
+/* A note card — same outlined-box look as the recipe .info-card.
+   The --grey / --white modifiers just swap the fill colour. */
+.about-card {
   width: 100%;
   max-width: 460px;
   display: flex;
@@ -31,13 +31,13 @@
   animation: float 6s ease-in-out infinite alternate;
 }
 
-.about-card-1 { background-color: var(--grey); }
-.about-card-2 { background-color: var(--white); }
+.about-card--grey  { background-color: var(--grey); }
+.about-card--white { background-color: var(--white); }
 
 /* Offset each card's float so they bob out of sync. */
-.about article:nth-of-type(2) { animation-delay: -1.5s; }
-.about article:nth-of-type(3) { animation-delay: -3s;   }
-.about article:nth-of-type(4) { animation-delay: -4.5s; }
+.about-card:nth-of-type(2) { animation-delay: -1.5s; }
+.about-card:nth-of-type(3) { animation-delay: -3s;   }
+.about-card:nth-of-type(4) { animation-delay: -4.5s; }
 
 /* Card heading — the site's display font, like the Flower Food title. */
 .about-title {
@@ -62,22 +62,19 @@
 }
 
 /* ✿-bulleted lists with a hanging flower marker. */
-.about-card-1 ul,
-.about-card-2 ul {
+.about-card ul {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.about-card-1 li,
-.about-card-2 li {
+.about-card li {
   display: flex;
   gap: 0.5rem;
 }
 
-.about-card-1 li::before,
-.about-card-2 li::before {
+.about-card li::before {
   content: "✿";
   flex-shrink: 0;
 }
@@ -96,16 +93,15 @@
     animation: biamar 10s linear infinite;
   }
 
-  .about-card-1,
-  .about-card-2 {
+  .about-card {
     position: absolute;
     margin: 0;
   }
 
-  .about-card-1:nth-of-type(1) { top: 40%; left: 10%;  width: 360px; rotate: -4deg; }
-  .about-card-2:nth-of-type(2) { top: 33%; left: 36%;  width: 360px; rotate: 3deg;  }
-  .about-card-1:nth-of-type(3) { top: 34%; right: 13%; width: 300px; rotate: -3deg; }
-  .about-card-2:nth-of-type(4) { top: 60%; right: 9%;  width: 400px; rotate: 6deg;  }
+  .about-card:nth-of-type(1) { top: 40%; left: 10%;  width: 360px; rotate: -4deg; }
+  .about-card:nth-of-type(2) { top: 33%; left: 36%;  width: 360px; rotate: 3deg;  }
+  .about-card:nth-of-type(3) { top: 34%; right: 13%; width: 300px; rotate: -3deg; }
+  .about-card:nth-of-type(4) { top: 60%; right: 9%;  width: 400px; rotate: 6deg;  }
 }
 
 /* ---- Animations ---- */
@@ -125,8 +121,7 @@
 /* Respect users who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   .about,
-  .about-card-1,
-  .about-card-2 {
+  .about-card {
     animation: none;
   }
 }

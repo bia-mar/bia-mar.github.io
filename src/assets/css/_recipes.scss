@@ -56,8 +56,7 @@
   letter-spacing: 0.05em;
   background-color: var(--grey);
   padding: 0.2rem 0.4rem;
-
-  border: 0.5px solid var(--dark-grey);
+  border: var(--hairline);
 }
 
 /* -------- Column 1: Info -------- */
@@ -73,7 +72,7 @@
   line-height: 1.3;
   background-color: var(--grey);
   padding: 0.2rem 1rem;
-  border: 0.5px solid var(--dark-grey);
+  border: var(--hairline);
 }
 
 /* Recipe titles use the same script fonts as the landing cards; roman (Latin
@@ -97,8 +96,7 @@
   gap: 1.5rem;
   background-color: var(--grey);
   padding: 1rem;
-
-  border: 0.5px solid var(--dark-grey);
+  border: var(--hairline);
 }
 
 .subtitle {
@@ -336,7 +334,7 @@
 
   .image-strip {
     position: relative;
-    height: 220vh;            /* glide length — tune the pace here */
+    height: 220vh;            /* pre-JS fallback; myscript.js sizes it to the photo track */
     padding: 0;
   }
 

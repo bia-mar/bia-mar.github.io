@@ -328,7 +328,7 @@ nav a h2 {
   letter-spacing: 0.05em;
   background-color: var(--grey);
   padding: 0.2rem 0.4rem;
-  border: 0.5px solid var(--dark-grey);
+  border: var(--hairline);
 }
 
 /* -------- Column 1: Info -------- */
@@ -349,7 +349,7 @@ nav a h2 {
   line-height: 1.3;
   background-color: var(--grey);
   padding: 0.2rem 1rem;
-  border: 0.5px solid var(--dark-grey);
+  border: var(--hairline);
 }
 
 /* Recipe titles use the same script fonts as the landing cards; roman (Latin
@@ -378,7 +378,7 @@ nav a h2 {
   gap: 1.5rem;
   background-color: var(--grey);
   padding: 1rem;
-  border: 0.5px solid var(--dark-grey);
+  border: var(--hairline);
 }
 
 .subtitle {
@@ -724,7 +724,7 @@ nav a h2 {
   }
   .image-strip {
     position: relative;
-    height: 220vh; /* glide length — tune the pace here */
+    height: 220vh; /* pre-JS fallback; myscript.js sizes it to the photo track */
     padding: 0;
   }
   .strip-stage {
@@ -1051,9 +1051,9 @@ li:has(.recipe-card) {
   background: url("/assets/img/about.webp") center/cover no-repeat;
 }
 
-/* A note card — same outlined-box look as the recipe .info-card. */
-.about-card-1,
-.about-card-2 {
+/* A note card — same outlined-box look as the recipe .info-card.
+   The --grey / --white modifiers just swap the fill colour. */
+.about-card {
   width: 100%;
   max-width: 460px;
   display: -webkit-box;
@@ -1071,26 +1071,26 @@ li:has(.recipe-card) {
           animation: float 6s ease-in-out infinite alternate;
 }
 
-.about-card-1 {
+.about-card--grey {
   background-color: var(--grey);
 }
 
-.about-card-2 {
+.about-card--white {
   background-color: var(--white);
 }
 
 /* Offset each card's float so they bob out of sync. */
-.about article:nth-of-type(2) {
+.about-card:nth-of-type(2) {
   -webkit-animation-delay: -1.5s;
           animation-delay: -1.5s;
 }
 
-.about article:nth-of-type(3) {
+.about-card:nth-of-type(3) {
   -webkit-animation-delay: -3s;
           animation-delay: -3s;
 }
 
-.about article:nth-of-type(4) {
+.about-card:nth-of-type(4) {
   -webkit-animation-delay: -4.5s;
           animation-delay: -4.5s;
 }
@@ -1122,8 +1122,7 @@ li:has(.recipe-card) {
 }
 
 /* ✿-bulleted lists with a hanging flower marker. */
-.about-card-1 ul,
-.about-card-2 ul {
+.about-card ul {
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1135,16 +1134,14 @@ li:has(.recipe-card) {
   gap: 0.75rem;
 }
 
-.about-card-1 li,
-.about-card-2 li {
+.about-card li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 0.5rem;
 }
 
-.about-card-1 li::before,
-.about-card-2 li::before {
+.about-card li::before {
   content: "✿";
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -1164,30 +1161,29 @@ li:has(.recipe-card) {
     -webkit-animation: biamar 10s linear infinite;
             animation: biamar 10s linear infinite;
   }
-  .about-card-1,
-  .about-card-2 {
+  .about-card {
     position: absolute;
     margin: 0;
   }
-  .about-card-1:nth-of-type(1) {
+  .about-card:nth-of-type(1) {
     top: 40%;
     left: 10%;
     width: 360px;
     rotate: -4deg;
   }
-  .about-card-2:nth-of-type(2) {
+  .about-card:nth-of-type(2) {
     top: 33%;
     left: 36%;
     width: 360px;
     rotate: 3deg;
   }
-  .about-card-1:nth-of-type(3) {
+  .about-card:nth-of-type(3) {
     top: 34%;
     right: 13%;
     width: 300px;
     rotate: -3deg;
   }
-  .about-card-2:nth-of-type(4) {
+  .about-card:nth-of-type(4) {
     top: 60%;
     right: 9%;
     width: 400px;
@@ -1232,8 +1228,7 @@ li:has(.recipe-card) {
 /* Respect users who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   .about,
-  .about-card-1,
-  .about-card-2 {
+  .about-card {
     -webkit-animation: none;
             animation: none;
   }

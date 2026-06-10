@@ -15,9 +15,12 @@
   setPinOffset();
 })();
 
-// Cross-browser scroll-driven image glide (Firefox, Safari, Chrome).
-// Smoothness: one update per frame via requestAnimationFrame (no layout thrash on
-// every scroll event) and a compositor-friendly translate3d transform.
+// Scroll-driven image glide: the photos glide up over the pinned recipe.
+// Pace: the strip is sized to match the photo track, so the glide tracks scrolling
+// ~1:1 — a calm, consistent speed on every recipe. (Before, the fixed 220vh strip
+// made the photos move ~6x faster than the scroll, and faster still the more
+// photos a recipe had.) One update per frame via requestAnimationFrame; the
+// transform is a compositor-friendly translate3d.
 (function () {
   // Only run on desktop with motion allowed.
   if (window.innerWidth <= 1000) return;
@@ -29,20 +32,28 @@
 
   var ticking = false;
 
+  // Layout cached here, measured only on load/resize — never on the scroll path.
+  var pinned = 0; // scroll distance over which the glide runs
+  var travel = 0; // distance the track has to move
+  var stripTop = 0; // the strip's position in the document (stable while scrolling)
+
+  // Make the strip exactly as tall as the photo track (so the pinned scroll
+  // distance equals the track's travel -> photos move at scroll speed), then read
+  // the geometry once. These reads force layout, so we keep them out of update().
+  function measure() {
+    strip.style.height = track.scrollHeight + 'px';
+    var vh = window.innerHeight;
+    pinned = strip.offsetHeight - vh;
+    travel = Math.max(0, track.scrollHeight - vh);
+    stripTop = strip.getBoundingClientRect().top + window.scrollY;
+  }
+
+  // Per frame: only read window.scrollY (no layout reflow) and set the transform.
+  // Equivalent to the old getBoundingClientRect math: rect.top === stripTop - scrollY.
   function update() {
     ticking = false;
-    var vh = window.innerHeight;
-
-    // Progress across the time the strip's sticky stage is pinned (0 -> 1),
-    // so the glide starts exactly when it pins (no dead scroll) and ends as it releases.
-    var pinned = strip.offsetHeight - vh;
-    var progress = pinned > 0 ? -strip.getBoundingClientRect().top / pinned : 0;
+    var progress = pinned > 0 ? (window.scrollY - stripTop) / pinned : 0;
     progress = progress < 0 ? 0 : progress > 1 ? 1 : progress;
-
-    // Travel from the first photo at the top to the last photo at the bottom.
-    var travel = track.scrollHeight - vh;
-    if (travel < 0) travel = 0;
-
     track.style.transform = 'translate3d(0,' + (-progress * travel) + 'px,0)';
   }
 
@@ -53,9 +64,17 @@
     }
   }
 
+  // Photo sizes are vw/vh-based, so the track height changes with the viewport —
+  // re-measure on resize/load, then repaint.
+  function refresh() {
+    measure();
+    update();
+  }
+
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  update();
+  window.addEventListener('resize', refresh);
+  window.addEventListener('load', refresh);
+  refresh();
 })();
 
 
@@ -67,8 +86,14 @@
 
 
 // JUST LANDING PAGE ----------------------------------------------------
+(function () {
 var leftBox = document.getElementById('images');
 var rightBox = document.getElementById('recipes');
+
+// #images / #recipes only exist on the landing page. On other pages (e.g. the
+// recipe pages) they're null, so bail out before the listeners below run —
+// otherwise leftBox.addEventListener(...) throws a TypeError.
+if (!leftBox || !rightBox) return;
 
 // prevent infinite loop
 var isScrolling = false;
@@ -96,14 +121,12 @@ function handleScroll(scrolledElement, targetElement) {
 
 // Event listeners
 
-//inhibit downward scroll on left box, it will alway percieve itself as being scrolled upwards
+// Drive the left box's scroll manually (passive:false lets us preventDefault) so
+// it mirrors the right box instead of scrolling natively.
 leftBox.addEventListener('wheel', function(event) {
-  // if (event.deltaY > 0) {
-    event.preventDefault();
-    leftBox.scrollTop -= event.deltaY;
-  // }
+  event.preventDefault();
+  leftBox.scrollTop -= event.deltaY;
 }, { passive: false });
-// this passive false is for the browser to not interfere
 
 leftBox.addEventListener('scroll', function() {
   handleScroll(leftBox, rightBox);
@@ -137,3 +160,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 });
+})();
