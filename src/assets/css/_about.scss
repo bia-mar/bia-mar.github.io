@@ -1,0 +1,125 @@
+/* ============================================ */
+/* ABOUT PAGE                                   */
+/* ============================================ */
+body {
+  margin: 0;
+  padding: 0;
+}
+/* Full-bleed flower-field backdrop; the note cards float over it.
+   Mobile (default): cards stacked in a centred column.
+   Desktop: cards scattered + tilted over a single 100vh meadow. */
+.about {
+  height: 100vh;
+  background: url("/assets/img/about.webp");
+  background-size: 150% auto;     /* 50% wider than the box → real room to pan */
+  background-position: bottom left;
+  animation-name: biamar;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* A note card — same outlined-box look as the recipe .info-card. */
+/* apply it to the cards */
+.about-card-1,
+.about-card-2 {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  font-family: var(--Monospace-font);
+  border: 0.5px solid var(--dark-grey);
+  animation: float 6s ease-in-out infinite alternate;
+}
+
+.about-card-1 {
+  background-color: var(--grey);
+}
+
+.about-card-2 {
+  background-color: var(--white);
+}
+
+.about article:nth-of-type(2) { animation-delay: -1.5s; }
+.about article:nth-of-type(3) { animation-delay: -3s;   }
+.about article:nth-of-type(4) { animation-delay: -4.5s; }
+
+
+
+
+/* Card heading — the site's display font, like the Flower Food title. */
+.about-title {
+  font-family: var(--Main-font);
+  font-size: var(--font-size-big);
+  line-height: 1.2;
+}
+
+/* Kaomoji / ascii art, shown big like in the mock-up. Decorative — mark the
+   element aria-hidden in the markup so screen readers skip the gibberish. */
+.about-ascii {
+  font-family: var(--Main-font);
+  font-size: var(--font-size-big);
+  line-height: 1.2;
+}
+
+/* A row inside a card: the ascii face sitting beside its caption. */
+.about-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ✿-bulleted lists with a hanging flower marker. */
+.about-card-1 ul,
+.about-card-2 ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-card-1 li,
+.about-card-2 li {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.about-card-1 li::before,
+.about-card-2 li::before {
+  content: "✿";
+  flex-shrink: 0;
+}
+
+/* Desktop: free-position the four cards over the meadow, each gently tilted. */
+@media (min-width: 1001px) {
+
+  .about-card-1 {
+    position: absolute;
+    margin: 0;
+  }
+
+  .about-card-2 {
+    position: absolute;
+    margin: 0;
+  }
+
+  .about-card-1:nth-of-type(1) { top: 40%; left: 10%;  width: 360px; rotate: -4deg; }
+  .about-card-2:nth-of-type(2) { top: 33%; left: 36%;  width: 360px; rotate: 3deg;  }
+  .about-card-1:nth-of-type(3) { top: 34%; right: 13%; width: 300px; rotate: -3deg; }
+  .about-card-2:nth-of-type(4) { top: 60%; right: 9%;  width: 400px; rotate: 6deg;  }
+}
+
+/* ---- Animations ---- */
+
+@keyframes biamar {  
+  0% { background-position: bottom left; }
+  100% { background-position: bottom right; }
+}
+
+/* the float motion */
+@keyframes float {
+  from { translate: 0 0; }
+  to   { translate: 0 -34px; }   /* 10px = "just a bit" */
+}
