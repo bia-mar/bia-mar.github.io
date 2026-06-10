@@ -58,7 +58,15 @@
   update();
 })();
 
-// LANDING PAGE
+
+
+
+
+
+
+
+
+// JUST LANDING PAGE ----------------------------------------------------
 var leftBox = document.getElementById('images');
 var rightBox = document.getElementById('recipes');
 
@@ -86,17 +94,46 @@ function handleScroll(scrolledElement, targetElement) {
   }
 }
 
-// Event listeners (landing page only; these elements don't exist on recipe pages)
-if (leftBox && rightBox) {
-  leftBox.addEventListener('scroll', function() {
-    handleScroll(leftBox, rightBox);
-  });
+// Event listeners
 
-  rightBox.addEventListener('scroll', function() {
-    handleScroll(rightBox, leftBox);
-  });
+//inhibit downward scroll on left box, it will alway percieve itself as being scrolled upwards
+leftBox.addEventListener('wheel', function(event) {
+  // if (event.deltaY > 0) {
+    event.preventDefault();
+    leftBox.scrollTop -= event.deltaY;
+  // }
+}, { passive: false });
+// this passive false is for the browser to not interfere
 
-  document.addEventListener('DOMContentLoaded', function() {
-    leftBox.scrollTop = leftBox.scrollHeight - leftBox.clientHeight;
-  });
-}
+leftBox.addEventListener('scroll', function() {
+  handleScroll(leftBox, rightBox);
+});
+
+rightBox.addEventListener('scroll', function() {
+  handleScroll(rightBox, leftBox);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  //paralell scrolls
+  leftBox.scrollTop = leftBox.scrollHeight - leftBox.clientHeight;
+
+
+  // avoiding a url and card url to conflict
+  var recipeCards = document.querySelectorAll('.recipe-card');
+
+  for (var i = 0; i < recipeCards.length; i++) {
+    var card = recipeCards[i];
+    
+    card.style.cursor = 'pointer';
+
+    card.addEventListener('click', function(event) {
+      
+      var otherLink = this.querySelector('h3 a');
+
+      if (!event.target.closest('a')) {
+        window.location.href = otherLink.href;
+      }
+    });
+  }
+
+});
