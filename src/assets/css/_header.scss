@@ -1,9 +1,9 @@
 header {
   position: fixed;
-  top: 24px;
+  top: var(--nav-gap);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: var(--z-top);
   mix-blend-mode: difference;
 }
 
@@ -23,10 +23,10 @@ nav a h2 {
 
 #images ~ nav {
   position: absolute;
-  bottom: 24px;
+  bottom: var(--nav-gap);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: var(--z-top);
   mix-blend-mode: difference;
 }
 

@@ -27,7 +27,7 @@
   border: 1px solid var(--dark-grey);
   background-color: var(--white);
   padding: 0.2rem 0.6rem;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.2s var(--ease-bounce);
   line-height: 1.2;
 }
 
@@ -244,9 +244,9 @@
    .btn-secondary; this only positions the pair. */
 .recipe-nav {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1000;
+  bottom: var(--nav-gap);
+  right: var(--nav-gap);
+  z-index: var(--z-top);
   display: flex;
   gap: 0.5rem;
 }

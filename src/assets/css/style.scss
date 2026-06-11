@@ -120,6 +120,11 @@
     --other-angle: 4deg;
     --aspect-ratio: 0.65;  /* 3:4 ratio (Width divided by Height) */
     --aspect-ratio-2: 1.777;  /* 16:9 ratio (Width divided by Height) */
+
+    --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-slow: all 0.3s ease-in-out;
+    --z-top: 1000;
+    --nav-gap: 24px;
 }
 
 html {

@@ -1,26 +1,26 @@
 .recipe-card:hover {
   transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.2s var(--ease-bounce);
 }
 .recipe-card {
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.2s var(--ease-bounce);
 }
 
 header a h1:hover,
 nav a h2:hover {
     transform: translateY(-2px) scale(1.05);
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.2s var(--ease-bounce);
 }
 header a h1,
 nav a h2 {
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.2s var(--ease-bounce);
 }
 
 .recipe-card.stacked {
   --white: #ccc9e3;
   --grey: #a5a5c5;
   transform: rotate(-4deg);
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition-slow);
 }
 #recipes li:nth-of-type(2) .recipe-card.stacked {
   transform: rotate(3deg);
@@ -41,11 +41,11 @@ nav a h2 {
 .recipe-card.hidden-title h3:nth-of-type(1) {
     top:20px;
     left:20px;
-    transition: all 0.3s ease-in-out;
+    transition: var(--transition-slow);
 }
 .recipe-card.hidden-title div:nth-of-type(2) img {
   transform: translateX(-60%) rotate(var(--other-angle));
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition-slow);
   z-index: -1;
 }
 
@@ -53,7 +53,7 @@ main #recipes li div.in-focus {
   --white: #f1f0fc;
   --grey: #ccc9e3;
   transform: scale(1) rotate(0deg);
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition-slow);
   box-shadow:
     0 0 8px rgba(0, 0, 0, 0.03),
     0 0 14px rgba(0, 0, 0, 0.05),
@@ -72,7 +72,7 @@ main #recipes li div.in-focus div:nth-of-type(2) img {
     --translate-x: calc(var(--occupied-w) - (var(--calculated-h) * var(--aspect-ratio)));
     /* Updated transform to shift the image right before rotating */
     transform: translateX(var(--translate-x)) rotate(var(--other-angle));
-    transition: all 0.3s ease-in-out;
+    transition: var(--transition-slow);
 }
 main #recipes li div.in-focus h3:nth-of-type(1) {
   top:-50px;
@@ -87,7 +87,7 @@ main #recipes li div.in-focus h3:nth-of-type(1) {
 
   .recipe-card.hidden-title div:nth-of-type(2) img {
   transform: translateY(-50%) rotate(var(--other-angle));
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition-slow);
   z-index: -1;
   }
 }

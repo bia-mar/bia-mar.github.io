@@ -104,6 +104,10 @@
   --other-angle: 4deg;
   --aspect-ratio: 0.65; /* 3:4 ratio (Width divided by Height) */
   --aspect-ratio-2: 1.777; /* 16:9 ratio (Width divided by Height) */
+  --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --transition-slow: all 0.3s ease-in-out;
+  --z-top: 1000;
+  --nav-gap: 24px;
 }
 
 html {
@@ -219,11 +223,11 @@ li {
 
 header {
   position: fixed;
-  top: 24px;
+  top: var(--nav-gap);
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  z-index: 1000;
+  z-index: var(--z-top);
   mix-blend-mode: difference;
 }
 
@@ -242,11 +246,11 @@ nav a h2 {
 
 #images ~ nav {
   position: absolute;
-  bottom: 24px;
+  bottom: var(--nav-gap);
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  z-index: 1000;
+  z-index: var(--z-top);
   mix-blend-mode: difference;
 }
 
@@ -485,10 +489,10 @@ footer p {
   border: 1px solid var(--dark-grey);
   background-color: var(--white);
   padding: 0.2rem 0.6rem;
-  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: -webkit-transform 0.2s var(--ease-bounce);
+  transition: -webkit-transform 0.2s var(--ease-bounce);
+  transition: transform 0.2s var(--ease-bounce);
+  transition: transform 0.2s var(--ease-bounce), -webkit-transform 0.2s var(--ease-bounce);
   line-height: 1.2;
 }
 
@@ -769,9 +773,9 @@ footer p {
    .btn-secondary; this only positions the pair. */
 .recipe-nav {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1000;
+  bottom: var(--nav-gap);
+  right: var(--nav-gap);
+  z-index: var(--z-top);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1131,8 +1135,8 @@ h4.tag {
           transform: translateX(var(--translate-x)) rotate(var(--other-angle));
   -webkit-transform-origin: top left;
           transform-origin: top left;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: var(--transition-slow);
+  transition: var(--transition-slow);
 }
 
 li:has(.recipe-card) {
@@ -1173,8 +1177,8 @@ li:has(.recipe-card) {
   -webkit-transform: rotate(var(--angle));
           transform: rotate(var(--angle));
   text-transform: uppercase;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: var(--transition-slow);
+  transition: var(--transition-slow);
 }
 
 .recipe-card h3:nth-of-type(2) {
@@ -1478,27 +1482,27 @@ li:has(.recipe-card) {
 .recipe-card:hover {
   -webkit-transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
           transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
-  -webkit-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.2s var(--ease-bounce);
+  transition: all 0.2s var(--ease-bounce);
 }
 
 .recipe-card {
-  -webkit-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.2s var(--ease-bounce);
+  transition: all 0.2s var(--ease-bounce);
 }
 
 header a h1:hover,
 nav a h2:hover {
   -webkit-transform: translateY(-2px) scale(1.05);
           transform: translateY(-2px) scale(1.05);
-  -webkit-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.2s var(--ease-bounce);
+  transition: all 0.2s var(--ease-bounce);
 }
 
 header a h1,
 nav a h2 {
-  -webkit-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-transition: all 0.2s var(--ease-bounce);
+  transition: all 0.2s var(--ease-bounce);
 }
 
 .recipe-card.stacked {
@@ -1506,8 +1510,8 @@ nav a h2 {
   --grey: #a5a5c5;
   -webkit-transform: rotate(-4deg);
           transform: rotate(-4deg);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: var(--transition-slow);
+  transition: var(--transition-slow);
 }
 
 #recipes li:nth-of-type(2) .recipe-card.stacked {
@@ -1538,15 +1542,15 @@ nav a h2 {
 .recipe-card.hidden-title h3:nth-of-type(1) {
   top: 20px;
   left: 20px;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: var(--transition-slow);
+  transition: var(--transition-slow);
 }
 
 .recipe-card.hidden-title div:nth-of-type(2) img {
   -webkit-transform: translateX(-60%) rotate(var(--other-angle));
           transform: translateX(-60%) rotate(var(--other-angle));
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: var(--transition-slow);
+  transition: var(--transition-slow);
   z-index: -1;
 }
 
@@ -1555,8 +1559,8 @@ main #recipes li div.in-focus {
   --grey: #ccc9e3;
   -webkit-transform: scale(1) rotate(0deg);
           transform: scale(1) rotate(0deg);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: var(--transition-slow);
+  transition: var(--transition-slow);
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.03), 0 0 14px rgba(0, 0, 0, 0.05), 0 0 40px rgba(0, 0, 0, 0.06), 0 0 80px rgba(0, 0, 0, 0.07), 0 0 120px rgba(0, 0, 0, 0.08), 0 0 300px rgba(0, 0, 0, 0.09);
           box-shadow: 0 0 8px rgba(0, 0, 0, 0.03), 0 0 14px rgba(0, 0, 0, 0.05), 0 0 40px rgba(0, 0, 0, 0.06), 0 0 80px rgba(0, 0, 0, 0.07), 0 0 120px rgba(0, 0, 0, 0.08), 0 0 300px rgba(0, 0, 0, 0.09);
 }
@@ -1572,8 +1576,8 @@ main #recipes li div.in-focus div:nth-of-type(2) img {
   /* Updated transform to shift the image right before rotating */
   -webkit-transform: translateX(var(--translate-x)) rotate(var(--other-angle));
           transform: translateX(var(--translate-x)) rotate(var(--other-angle));
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: var(--transition-slow);
+  transition: var(--transition-slow);
 }
 
 main #recipes li div.in-focus h3:nth-of-type(1) {
@@ -1589,8 +1593,8 @@ main #recipes li div.in-focus h3:nth-of-type(1) {
   .recipe-card.hidden-title div:nth-of-type(2) img {
     -webkit-transform: translateY(-50%) rotate(var(--other-angle));
             transform: translateY(-50%) rotate(var(--other-angle));
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    -webkit-transition: var(--transition-slow);
+    transition: var(--transition-slow);
     z-index: -1;
   }
 }
