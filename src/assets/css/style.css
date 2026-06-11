@@ -471,6 +471,14 @@ footer p {
   gap: 90px;
 }
 
+@media (max-width: 1000px) {
+  #main-footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
 /* ============================================ */
 /* RECIPE PAGE                                  */
 /* ============================================ */

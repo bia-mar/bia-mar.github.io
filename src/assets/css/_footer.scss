@@ -107,3 +107,9 @@ footer p {
     flex-direction: row;
     gap: 90px;
 }
+
+@media (max-width: 1000px) {
+    #main-footer {
+        flex-direction: column;
+    }
+}
