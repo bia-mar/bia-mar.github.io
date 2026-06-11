@@ -1382,13 +1382,21 @@ main #recipes li div.in-focus div:nth-of-type(2) img {
   transition: all 0.3s ease-in-out;
 }
 
+main #recipes li div.in-focus h3:nth-of-type(1) {
+  top: -50px;
+  left: -16px;
+}
+
 @media (max-width: 1000px) {
   main #recipes li div.in-focus div:nth-of-type(2) img {
     -webkit-transform: translateX(16px) translateY(20px) rotate(var(--other-angle)) scale(1.1);
             transform: translateX(16px) translateY(20px) rotate(var(--other-angle)) scale(1.1);
   }
-}
-main #recipes li div.in-focus h3:nth-of-type(1) {
-  top: -50px;
-  left: -16px;
+  .recipe-card.hidden-title div:nth-of-type(2) img {
+    -webkit-transform: translateY(-50%) rotate(var(--other-angle));
+            transform: translateY(-50%) rotate(var(--other-angle));
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+  }
 }
