@@ -937,6 +937,8 @@ h4.tag {
           transform: translateX(var(--translate-x)) rotate(var(--other-angle));
   -webkit-transform-origin: top left;
           transform-origin: top left;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 li:has(.recipe-card) {
@@ -977,6 +979,8 @@ li:has(.recipe-card) {
   -webkit-transform: rotate(var(--angle));
           transform: rotate(var(--angle));
   text-transform: uppercase;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .recipe-card h3:nth-of-type(2) {
@@ -1303,7 +1307,7 @@ nav a h2 {
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.recipe-card.go-small-transparent {
+.recipe-card.stacked {
   --white: #ccc9e3;
   --grey: #a5a5c5;
   -webkit-transform: rotate(-4deg);
@@ -1312,29 +1316,44 @@ nav a h2 {
   transition: all 0.3s ease-in-out;
 }
 
-#recipes li:nth-of-type(2) .recipe-card.go-small-transparent {
+#recipes li:nth-of-type(2) .recipe-card.stacked {
   -webkit-transform: rotate(3deg);
           transform: rotate(3deg);
 }
 
-#recipes li:nth-of-type(3) .recipe-card.go-small-transparent {
+#recipes li:nth-of-type(3) .recipe-card.stacked {
   -webkit-transform: rotate(-6deg);
           transform: rotate(-6deg);
 }
 
-#recipes li:nth-of-type(4) .recipe-card.go-small-transparent {
+#recipes li:nth-of-type(4) .recipe-card.stacked {
   -webkit-transform: rotate(5deg);
           transform: rotate(5deg);
 }
 
-#recipes li:nth-of-type(5) .recipe-card.go-small-transparent {
+#recipes li:nth-of-type(5) .recipe-card.stacked {
   -webkit-transform: rotate(-8deg);
           transform: rotate(-8deg);
 }
 
-#recipes li:nth-of-type(6) .recipe-card.go-small-transparent {
+#recipes li:nth-of-type(6) .recipe-card.stacked {
   -webkit-transform: rotate(10deg);
           transform: rotate(10deg);
+}
+
+.recipe-card.hidden-title h3:nth-of-type(1) {
+  top: 20px;
+  left: 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.recipe-card.hidden-title div:nth-of-type(2) img {
+  -webkit-transform: translateX(-60%) rotate(var(--other-angle));
+          transform: translateX(-60%) rotate(var(--other-angle));
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
 }
 
 main #recipes li div.in-focus {
@@ -1346,4 +1365,30 @@ main #recipes li div.in-focus {
   transition: all 0.3s ease-in-out;
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.03), 0 0 14px rgba(0, 0, 0, 0.05), 0 0 40px rgba(0, 0, 0, 0.06), 0 0 80px rgba(0, 0, 0, 0.07), 0 0 120px rgba(0, 0, 0, 0.08), 0 0 300px rgba(0, 0, 0, 0.09);
           box-shadow: 0 0 8px rgba(0, 0, 0, 0.03), 0 0 14px rgba(0, 0, 0, 0.05), 0 0 40px rgba(0, 0, 0, 0.06), 0 0 80px rgba(0, 0, 0, 0.07), 0 0 120px rgba(0, 0, 0, 0.08), 0 0 300px rgba(0, 0, 0, 0.09);
+}
+
+main #recipes li div.in-focus div:nth-of-type(2) img {
+  /* Calculate the exact height using 100cqh (100% of container height) */
+  --calculated-h: calc(100cqh / (cos(var(--other-angle)) + (var(--aspect-ratio) * sin(var(--other-angle)))));
+  height: var(--calculated-h);
+  /* Base the width on that exact same container-height calculation */
+  width: calc(var(--calculated-h) * var(--aspect-ratio));
+  --occupied-w: calc((var(--calculated-h) * var(--aspect-ratio) * cos(var(--other-angle))) + (var(--calculated-h) * sin(var(--other-angle))));
+  --translate-x: calc(var(--occupied-w) - (var(--calculated-h) * var(--aspect-ratio)));
+  /* Updated transform to shift the image right before rotating */
+  -webkit-transform: translateX(var(--translate-x)) rotate(var(--other-angle));
+          transform: translateX(var(--translate-x)) rotate(var(--other-angle));
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 1000px) {
+  main #recipes li div.in-focus div:nth-of-type(2) img {
+    -webkit-transform: translateX(16px) translateY(20px) rotate(var(--other-angle)) scale(1.1);
+            transform: translateX(16px) translateY(20px) rotate(var(--other-angle)) scale(1.1);
+  }
+}
+main #recipes li div.in-focus h3:nth-of-type(1) {
+  top: -50px;
+  left: -16px;
 }

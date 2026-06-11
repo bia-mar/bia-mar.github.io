@@ -116,6 +116,8 @@ h4.tag {
     /* Updated transform to shift the image right before rotating */
     transform: translateX(var(--translate-x)) rotate(var(--other-angle));
     transform-origin: top left;
+
+    transition: all 0.3s ease-in-out;
 }
 
 li:has(.recipe-card) {
@@ -148,6 +150,7 @@ li:has(.recipe-card) {
     transform: rotate(var(--angle));
     text-transform: uppercase;
     @extend %outline;
+    transition: all 0.3s ease-in-out;
 }
 
 .recipe-card h3:nth-of-type(2) {

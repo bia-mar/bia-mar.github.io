@@ -112,7 +112,7 @@ function landingPageThings() {
         isScrolling = false;
       });
 
-      console.log('scroll detected... weirdScrollProtocol activated by', scrollPercentage, 'bip boop');
+      // console.log('scroll detected... weirdScrollProtocol activated by', scrollPercentage, 'bip boop');
     }
   }
 
@@ -142,7 +142,7 @@ function landingPageThings() {
 
   // avoiding a url and card url to conflict ------------------------------------------
   // Convert to a true array right away so .slice() works
-  var recipeCards = Array.prototype.slice.call(document.querySelectorAll('.recipe-card'));
+  var recipeCards = Array.from(document.querySelectorAll('.recipe-card'));
 
   for (var i = 0; i < recipeCards.length; i++) {
     var card = recipeCards[i];
@@ -161,59 +161,66 @@ function landingPageThings() {
 
 
   // animation for stacked cards ------------------------------------------
-  //im using the recipeCards list from before
-  var options = { // define the target area for the recipecard "in focus"
-    root: null, // null means use the browser viewport
-    rootMargin: '-45% 0px -45% 0px', 
-    threshold: 0 // trigger as soon as even 1 pixel enters the zone
+  const recipeImages = document.querySelectorAll('.recipe-thumb');
+
+  // where a card is considered in focus
+  const observerOptions = {
+    root: null, 
+    rootMargin: "-5% 0px -5% 0px", 
+    threshold: 0 
   };
 
+  function effectModifier(entries) {
+    entries.forEach(function (entry) {
+        // Find which number ID is linked to the current letter
+        const targetId = entry.target.getAttribute('data-target');
+        const targetCard = document.getElementById(targetId);
 
-
-  // 2. Define what happens when an item enters or leaves the middle zone
-  var observer = new IntersectionObserver(function(entries) {
-    
-    // Loop through what the browser tells us changed on screen
-    for (var k = 0; k < entries.length; k++) {
-      var entry = entries[k]; 
-
-      // Find the exact index position of the card that just scrolled into view
-      var currentIndex = recipeCards.indexOf(entry.target);
-
-      if (entry.isIntersecting) {
-        // The item is now in the middle of the screen   .go-small-transparent
-        entry.target.classList.add('in-focus');
-        console.log('Element is in focus:', entry.target);
-
-        // Slice the cards safely using our true array index
-        var cardsBefore = recipeCards.slice(0, currentIndex);
-        var cardsAfter = recipeCards.slice(currentIndex + 1, recipeCards.length);
-
-        for (var j = 0; j < cardsBefore.length; j++) {
-          var stackedCard = cardsBefore[j];
-          stackedCard.classList.add('go-small-transparent');
-          stackedCard.classList.remove('in-focus');
+        if (entry.isIntersecting) {
+            // Add .in-focus to the target number
+            targetCard.classList.add('in-focus');
+            
+            // Calculate and apply .stacked to previous numbers
+            updateStackedClasses(targetCard);
+        } else {
+            // Remove .in-focus when it leaves the center line
+            targetCard.classList.remove('in-focus');
         }
-        for (var j = 0; j < cardsAfter.length; j++) {
-          var nonStackedCard = cardsAfter[j];
-          nonStackedCard.classList.remove('go-small-transparent');
+    });
+  }
+  
+  const observer = new IntersectionObserver(effectModifier, observerOptions);
+
+  recipeImages.forEach(function (image) {
+    observer.observe(image);
+  });
+
+  function updateStackedClasses(focusedCard) {
+    // Find where the currently focused number sits in the array (index 0 to 5)
+    const focusedIndex = recipeCards.indexOf(focusedCard);
+
+    recipeCards.forEach(function (num, index) {
+        if (index < focusedIndex) {
+            // If the number's position is before the focused one, add .stacked
+            num.classList.add('stacked');
+            num.classList.add('hidden-title');
+            console.log(num + "is in status A");
+        } else if (index = focusedIndex) {
+            num.classList.remove('stacked');
+            num.classList.remove('hidden-title');
+            console.log(num + "is in status B");
+        } else {
+          if (num.classList.contains('stacked')) {
+            num.classList.add('hidden-title');
+            console.log(num + "is in status C");
+          }
         }
-
-      } else {
-        // The item has left the middle of the screen
-        entry.target.classList.remove('in-focus');
-      }
-    }
-  }, options);
-
-  // 3. Select the items you want to track and start observing them
-  var itemsToTrack = document.querySelectorAll('.recipe-card');
-
-  for (var j = 0; j < itemsToTrack.length; j++) {
-    observer.observe(itemsToTrack[j]);
+    });
   }
 
 }
+
+
 
 // ARE WE IN THE INDEX PAGE???
 document.addEventListener('DOMContentLoaded', function() {
