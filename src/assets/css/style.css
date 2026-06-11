@@ -716,8 +716,9 @@ nav a h2 {
   border-radius: 1000rem 1000rem 0 0;
 }
 
-/* Enhanced scroll animation (desktop + motion): JavaScript-driven for cross-browser support */
-@media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
+/* Scroll-driven glide (all screen sizes, motion allowed): JavaScript-driven.
+   The recipe pins and the photos glide up over it. */
+@media (prefers-reduced-motion: no-preference) {
   .recipe-page {
     position: sticky;
     top: var(--pin-top, 0);
@@ -766,11 +767,32 @@ nav a h2 {
   .step-text {
     padding-left: 1.5rem;
   }
-  .image-strip {
-    padding: 2rem 1.25rem 3rem;
+  /* In the single-column layout the note thumbnail would be full-width (huge on
+     iPad ~768px); cap it so it stays a thumbnail. */
+  .note img {
+    max-width: 280px;
   }
+  /* Bigger gliding photos on phones (desktop keeps them at 70% of the viewport). */
   .image-track {
-    gap: 3.5rem;
+    width: 90%;
+    gap: 10vh;
+  }
+  /* Caption sits below the photo instead of overlaying it — on the smaller mobile
+     photos the overlaid pills were covering the image. */
+  .shot figcaption {
+    position: static;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-top: 0.5rem;
+  }
+  /* Centre the Back/Next nav along the bottom (desktop pins it bottom-right). */
+  .recipe-nav {
+    left: 0;
+    right: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 /* ----------------------------------------- */
@@ -1049,6 +1071,10 @@ li:has(.recipe-card) {
           align-items: center;
   gap: 2.5rem; /* > the float distance, so bobbing never overlaps */
   background: url("/assets/img/about.webp") center/cover no-repeat;
+  /* Drift the meadow side to side. On phones `cover` already makes the landscape
+     image wider than the screen, so there's room to pan; desktop zooms it (below). */
+  -webkit-animation: biamar 10s linear infinite;
+          animation: biamar 10s linear infinite;
 }
 
 /* A note card — same outlined-box look as the recipe .info-card.
@@ -1161,8 +1187,7 @@ li:has(.recipe-card) {
     overflow: hidden;
     background-size: 150% auto; /* wider than the box → room to pan sideways */
     background-position: bottom left;
-    -webkit-animation: biamar 10s linear infinite;
-            animation: biamar 10s linear infinite;
+    /* animation inherited from the base .about rule */
   }
   .about-card {
     position: absolute;
@@ -1194,7 +1219,7 @@ li:has(.recipe-card) {
   }
 }
 /* ---- Animations ---- */
-/* Slow side-to-side drift of the background (desktop only). */
+/* Slow side-to-side drift of the background. */
 @-webkit-keyframes biamar {
   0% {
     background-position: bottom left;

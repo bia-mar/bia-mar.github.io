@@ -22,8 +22,7 @@
 // photos a recipe had.) One update per frame via requestAnimationFrame; the
 // transform is a compositor-friendly translate3d.
 (function () {
-  // Only run on desktop with motion allowed.
-  if (window.innerWidth <= 1000) return;
+  // Run wherever motion is allowed (mobile + desktop).
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   var strip = document.querySelector('.image-strip');

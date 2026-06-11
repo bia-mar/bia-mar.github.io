@@ -15,6 +15,9 @@
   align-items: center;
   gap: 2.5rem;                /* > the float distance, so bobbing never overlaps */
   background: url("/assets/img/about.webp") center / cover no-repeat;
+  /* Drift the meadow side to side. On phones `cover` already makes the landscape
+     image wider than the screen, so there's room to pan; desktop zooms it (below). */
+  animation: biamar 10s linear infinite;
 }
 
 /* A note card — same outlined-box look as the recipe .info-card.
@@ -92,7 +95,7 @@
     overflow: hidden;
     background-size: 150% auto; /* wider than the box → room to pan sideways */
     background-position: bottom left;
-    animation: biamar 10s linear infinite;
+    /* animation inherited from the base .about rule */
   }
 
   .about-card {
@@ -108,7 +111,7 @@
 
 /* ---- Animations ---- */
 
-/* Slow side-to-side drift of the background (desktop only). */
+/* Slow side-to-side drift of the background. */
 @keyframes biamar {
   0%   { background-position: bottom left; }
   100% { background-position: bottom right; }

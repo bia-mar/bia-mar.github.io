@@ -325,8 +325,9 @@
   border-radius: 1000rem 1000rem 0 0;
 }
 
-/* Enhanced scroll animation (desktop + motion): JavaScript-driven for cross-browser support */
-@media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
+/* Scroll-driven glide (all screen sizes, motion allowed): JavaScript-driven.
+   The recipe pins and the photos glide up over it. */
+@media (prefers-reduced-motion: no-preference) {
   .recipe-page {
     position: sticky;
     top: var(--pin-top, 0);
@@ -366,20 +367,39 @@
     gap: 2.5rem;
     padding: 6rem 1.25rem 3rem;
   }
-
+  
   .recipe-steps {
     padding: 0; /* drop the desktop side indent */
   }
-
+  
   .step-text {
     padding-left: 1.5rem;
   }
-
-  .image-strip {
-    padding: 2rem 1.25rem 3rem;
+  
+  /* In the single-column layout the note thumbnail would be full-width (huge on
+     iPad ~768px); cap it so it stays a thumbnail. */
+  .note img {
+    max-width: 280px;
   }
 
+  /* Bigger gliding photos on phones (desktop keeps them at 70% of the viewport). */
   .image-track {
-    gap: 3.5rem;
+    width: 90%;
+    gap: 10vh;
+  }
+
+  /* Caption sits below the photo instead of overlaying it — on the smaller mobile
+     photos the overlaid pills were covering the image. */
+  .shot figcaption {
+    position: static;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+  }
+
+  /* Centre the Back/Next nav along the bottom (desktop pins it bottom-right). */
+  .recipe-nav {
+    left: 0;
+    right: 0;
+    justify-content: center;
   }
 }
