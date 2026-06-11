@@ -1067,6 +1067,9 @@ li:has(.recipe-card) {
   padding: 1.5rem;
   font-family: var(--Monospace-font);
   border: 0.5px solid var(--dark-grey);
+  --tilt: 0deg; /* per-card tilt; set on desktop below */
+  -webkit-transform: rotate(var(--tilt));
+          transform: rotate(var(--tilt)); /* static tilt (kept when motion is reduced) */
   -webkit-animation: float 6s ease-in-out infinite alternate;
           animation: float 6s ease-in-out infinite alternate;
 }
@@ -1169,25 +1172,25 @@ li:has(.recipe-card) {
     top: 40%;
     left: 10%;
     width: 360px;
-    rotate: -4deg;
+    --tilt: -4deg;
   }
   .about-card:nth-of-type(2) {
     top: 33%;
     left: 36%;
     width: 360px;
-    rotate: 3deg;
+    --tilt: 3deg;
   }
   .about-card:nth-of-type(3) {
     top: 34%;
     right: 13%;
     width: 300px;
-    rotate: -3deg;
+    --tilt: -3deg;
   }
   .about-card:nth-of-type(4) {
     top: 60%;
     right: 9%;
     width: 400px;
-    rotate: 6deg;
+    --tilt: 6deg;
   }
 }
 /* ---- Animations ---- */
@@ -1208,21 +1211,27 @@ li:has(.recipe-card) {
     background-position: bottom right;
   }
 }
-/* Subtle vertical float for the cards. */
+/* Subtle vertical float for the cards. Uses `transform` (universally supported,
+   incl. Safari) rather than the individual `translate` property, which Safari
+   animates unreliably. var(--tilt) keeps each card's angle during the float. */
 @-webkit-keyframes float {
   from {
-    translate: 0 0;
+    -webkit-transform: rotate(var(--tilt)) translateY(0);
+            transform: rotate(var(--tilt)) translateY(0);
   }
   to {
-    translate: 0 -34px;
+    -webkit-transform: rotate(var(--tilt)) translateY(-34px);
+            transform: rotate(var(--tilt)) translateY(-34px);
   }
 }
 @keyframes float {
   from {
-    translate: 0 0;
+    -webkit-transform: rotate(var(--tilt)) translateY(0);
+            transform: rotate(var(--tilt)) translateY(0);
   }
   to {
-    translate: 0 -34px;
+    -webkit-transform: rotate(var(--tilt)) translateY(-34px);
+            transform: rotate(var(--tilt)) translateY(-34px);
   }
 }
 /* Respect users who prefer reduced motion. */

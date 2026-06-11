@@ -28,6 +28,8 @@
   padding: 1.5rem;
   font-family: var(--Monospace-font);
   border: 0.5px solid var(--dark-grey);
+  --tilt: 0deg;                     /* per-card tilt; set on desktop below */
+  transform: rotate(var(--tilt));  /* static tilt (kept when motion is reduced) */
   animation: float 6s ease-in-out infinite alternate;
 }
 
@@ -98,10 +100,10 @@
     margin: 0;
   }
 
-  .about-card:nth-of-type(1) { top: 40%; left: 10%;  width: 360px; rotate: -4deg; }
-  .about-card:nth-of-type(2) { top: 33%; left: 36%;  width: 360px; rotate: 3deg;  }
-  .about-card:nth-of-type(3) { top: 34%; right: 13%; width: 300px; rotate: -3deg; }
-  .about-card:nth-of-type(4) { top: 60%; right: 9%;  width: 400px; rotate: 6deg;  }
+  .about-card:nth-of-type(1) { top: 40%; left: 10%;  width: 360px; --tilt: -4deg; }
+  .about-card:nth-of-type(2) { top: 33%; left: 36%;  width: 360px; --tilt: 3deg;  }
+  .about-card:nth-of-type(3) { top: 34%; right: 13%; width: 300px; --tilt: -3deg; }
+  .about-card:nth-of-type(4) { top: 60%; right: 9%;  width: 400px; --tilt: 6deg;  }
 }
 
 /* ---- Animations ---- */
@@ -112,10 +114,12 @@
   100% { background-position: bottom right; }
 }
 
-/* Subtle vertical float for the cards. */
+/* Subtle vertical float for the cards. Uses `transform` (universally supported,
+   incl. Safari) rather than the individual `translate` property, which Safari
+   animates unreliably. var(--tilt) keeps each card's angle during the float. */
 @keyframes float {
-  from { translate: 0 0; }
-  to   { translate: 0 -34px; }
+  from { transform: rotate(var(--tilt)) translateY(0); }
+  to   { transform: rotate(var(--tilt)) translateY(-34px); }
 }
 
 /* Respect users who prefer reduced motion. */
