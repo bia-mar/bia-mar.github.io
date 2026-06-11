@@ -280,10 +280,10 @@ footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 20px;
+  padding: 40px;
   background-color: var(--black);
   color: var(--white);
-  gap: 20px;
+  gap: 40px;
 }
 
 footer ul {
@@ -379,10 +379,10 @@ footer li:nth-of-type(6) a {
     color: #00ff00;
   } /* Green */
   67% {
-    color: #0000ff;
+    color: #0051ff;
   } /* Blue */
   83% {
-    color: #4b0082;
+    color: #8f00f5;
   } /* Indigo */
   100% {
     color: #ff0000;
@@ -403,10 +403,10 @@ footer li:nth-of-type(6) a {
     color: #00ff00;
   } /* Green */
   67% {
-    color: #0000ff;
+    color: #0051ff;
   } /* Blue */
   83% {
-    color: #4b0082;
+    color: #8f00f5;
   } /* Indigo */
   100% {
     color: #ff0000;
@@ -458,6 +458,17 @@ footer li:hover::before {
 footer p {
   font-family: var(--Main-font);
   font-style: italic;
+}
+
+#main-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 90px;
 }
 
 /* ============================================ */
@@ -1479,7 +1490,8 @@ li:has(.recipe-card) {
             animation: none;
   }
 }
-.recipe-card:hover {
+main #recipes li div.recipe-card:hover,
+#recipes li div.recipe-card.stacked:hover {
   -webkit-transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
           transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
   -webkit-transition: all 0.2s var(--ease-bounce);

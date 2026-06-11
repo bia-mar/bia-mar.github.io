@@ -120,8 +120,15 @@ function landingPageThings() {
   leftBox.addEventListener('wheel', function(event) {
     // if (event.deltaY > 0) {
     event.preventDefault();
-    leftBox.scrollTop -= event.deltaY;
+    
+    // If we are at the minimum scroll (0) and trying to scroll up, pass it to the body
+    if (leftBox.scrollTop <= 0.4 && event.deltaY > 0) {
+        window.scrollBy(0, event.deltaY);
+    } else {
+        leftBox.scrollTop -= event.deltaY;
+    }
     // }
+
   }, { passive: false });
   // this passive false is for the browser to not interfere
 

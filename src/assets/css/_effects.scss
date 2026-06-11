@@ -1,4 +1,5 @@
-.recipe-card:hover {
+main #recipes li div.recipe-card:hover,
+#recipes li div.recipe-card.stacked:hover {
   transform: translateY(-4px) scale(1.03) rotate(var(--other-angle));
   transition: all 0.2s var(--ease-bounce);
 }

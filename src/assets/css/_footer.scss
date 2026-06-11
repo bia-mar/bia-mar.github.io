@@ -3,10 +3,10 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 40px;
     background-color: var(--black);
     color: var(--white);
-    gap: 20px;
+    gap: 40px;
 }
 
 footer ul {
@@ -61,8 +61,8 @@ footer li:nth-of-type(6) a {
   17%  { color: #ff7f00; } /* Orange */
   33%  { color: #ffff00; } /* Yellow */
   50%  { color: #00ff00; } /* Green */
-  67%  { color: #0000ff; } /* Blue */
-  83%  { color: #4b0082; } /* Indigo */
+  67%  { color: #0051ff; } /* Blue */
+  83%  { color: #8f00f5; } /* Indigo */
   100% { color: #ff0000; } /* Back to Red */
 }
 
@@ -102,3 +102,8 @@ footer p {
     font-style: italic;
 }
 
+#main-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 90px;
+}
