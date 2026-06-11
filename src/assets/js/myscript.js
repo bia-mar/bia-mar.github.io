@@ -84,68 +84,68 @@
 
 
 
-// JUST LANDING PAGE ----------------------------------------------------
-(function () {
-var leftBox = document.getElementById('images');
-var rightBox = document.getElementById('recipes');
+// JUST LANDING PAGE --!!PLEASE DON'T EDIT WITHOUT CHECKING!!--------------------------------------------------
+function landingPageThings() {
+  // scroll stuff ------------------------------------------
+  var leftBox = document.getElementById('images');
+  var rightBox = document.getElementById('recipes');
 
-// #images / #recipes only exist on the landing page. On other pages (e.g. the
-// recipe pages) they're null, so bail out before the listeners below run —
-// otherwise leftBox.addEventListener(...) throws a TypeError.
-if (!leftBox || !rightBox) return;
+  // prevent infinite loop
+  var isScrolling = false;
 
-// prevent infinite loop
-var isScrolling = false;
+  function handleScroll(scrolledElement, targetElement) {
+    if (!isScrolling) {
+      isScrolling = true;
 
-function handleScroll(scrolledElement, targetElement) {
-  if (!isScrolling) {
-    isScrolling = true;
+      // how far the user scrolled (0 to 1)
+      var scrollSpace = scrolledElement.scrollHeight - scrolledElement.clientHeight;
+      var scrollPercentage = scrolledElement.scrollTop / scrollSpace;
 
-    // how far the user scrolled (0 to 1)
-    var scrollScrolled = scrolledElement.scrollHeight - scrolledElement.clientHeight;
-    var scrollPercentage = scrolledElement.scrollTop / scrollScrolled;
+      // scroll for the target element
+      var scrollTarget = targetElement.scrollHeight - targetElement.clientHeight;
 
-    // scroll for the target element
-    var scrollTarget = targetElement.scrollHeight - targetElement.clientHeight;
+      // target's scroll to the INVERSE percentage
+      targetElement.scrollTop = scrollTarget * (1 - scrollPercentage);
 
-    // target's scroll to the INVERSE percentage
-    targetElement.scrollTop = scrollTarget * (1 - scrollPercentage);
+      // Reset the flag on the next animation frame --- requestAnimationFrame is a built-in browser function that tells the browser: "Hey, I want to change something on the screen. Please run this code right before you paint the next frame."
+      requestAnimationFrame(function() {
+        isScrolling = false;
+      });
 
-    // Reset the flag on the next animation frame --- requestAnimationFrame is a built-in browser function that tells the browser: "Hey, I want to change something on the screen. Please run this code right before you paint the next frame."
-    requestAnimationFrame(function() {
-      isScrolling = false;
-    });
+      console.log('scroll detected... weirdScrollProtocol activated by', scrollPercentage, 'bip boop');
+    }
   }
-}
 
-// Event listeners
+  //inhibit downward scroll on left box, it will alway percieve itself as being scrolled upwards
+  leftBox.addEventListener('wheel', function(event) {
+    // if (event.deltaY > 0) {
+    event.preventDefault();
+    leftBox.scrollTop -= event.deltaY;
+    // }
+  }, { passive: false });
+  // this passive false is for the browser to not interfere
 
-// Drive the left box's scroll manually (passive:false lets us preventDefault) so
-// it mirrors the right box instead of scrolling natively.
-leftBox.addEventListener('wheel', function(event) {
-  event.preventDefault();
-  leftBox.scrollTop -= event.deltaY;
-}, { passive: false });
+  leftBox.addEventListener('scroll', function() {
+    handleScroll(leftBox, rightBox);
+  });
 
-leftBox.addEventListener('scroll', function() {
-  handleScroll(leftBox, rightBox);
-});
+  rightBox.addEventListener('scroll', function() {
+    handleScroll(rightBox, leftBox);
+  });
 
-rightBox.addEventListener('scroll', function() {
-  handleScroll(rightBox, leftBox);
-});
-
-document.addEventListener('DOMContentLoaded', function() {
   //paralell scrolls
   leftBox.scrollTop = leftBox.scrollHeight - leftBox.clientHeight;
 
 
-  // avoiding a url and card url to conflict
-  var recipeCards = document.querySelectorAll('.recipe-card');
+
+
+
+  // avoiding a url and card url to conflict ------------------------------------------
+  // Convert to a true array right away so .slice() works
+  var recipeCards = Array.prototype.slice.call(document.querySelectorAll('.recipe-card'));
 
   for (var i = 0; i < recipeCards.length; i++) {
     var card = recipeCards[i];
-    
     card.style.cursor = 'pointer';
 
     card.addEventListener('click', function(event) {
@@ -158,5 +158,68 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+
+
+  // animation for stacked cards ------------------------------------------
+  //im using the recipeCards list from before
+  var options = { // define the target area for the recipecard "in focus"
+    root: null, // null means use the browser viewport
+    rootMargin: '-45% 0px -45% 0px', 
+    threshold: 0 // trigger as soon as even 1 pixel enters the zone
+  };
+
+
+
+  // 2. Define what happens when an item enters or leaves the middle zone
+  var observer = new IntersectionObserver(function(entries) {
+    
+    // Loop through what the browser tells us changed on screen
+    for (var k = 0; k < entries.length; k++) {
+      var entry = entries[k]; 
+
+      // Find the exact index position of the card that just scrolled into view
+      var currentIndex = recipeCards.indexOf(entry.target);
+
+      if (entry.isIntersecting) {
+        // The item is now in the middle of the screen   .go-small-transparent
+        entry.target.classList.add('in-focus');
+        console.log('Element is in focus:', entry.target);
+
+        // Slice the cards safely using our true array index
+        var cardsBefore = recipeCards.slice(0, currentIndex);
+        var cardsAfter = recipeCards.slice(currentIndex + 1, recipeCards.length);
+
+        for (var j = 0; j < cardsBefore.length; j++) {
+          var stackedCard = cardsBefore[j];
+          stackedCard.classList.add('go-small-transparent');
+          stackedCard.classList.remove('in-focus');
+        }
+        for (var j = 0; j < cardsAfter.length; j++) {
+          var nonStackedCard = cardsAfter[j];
+          nonStackedCard.classList.remove('go-small-transparent');
+        }
+
+      } else {
+        // The item has left the middle of the screen
+        entry.target.classList.remove('in-focus');
+      }
+    }
+  }, options);
+
+  // 3. Select the items you want to track and start observing them
+  var itemsToTrack = document.querySelectorAll('.recipe-card');
+
+  for (var j = 0; j < itemsToTrack.length; j++) {
+    observer.observe(itemsToTrack[j]);
+  }
+
+}
+
+// ARE WE IN THE INDEX PAGE???
+document.addEventListener('DOMContentLoaded', function() {
+  var isLandingPage = document.getElementById('recipes'); //if there is a recipes in this page this will be ==True
+
+  if (isLandingPage) { //if True
+    landingPageThings();
+  }
 });
-})();

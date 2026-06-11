@@ -161,6 +161,14 @@ li:has(.recipe-card) {
   text-transform: uppercase;
 }
 
+#images::-webkit-scrollbar {
+    display: none;
+}
+#images {
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 
 

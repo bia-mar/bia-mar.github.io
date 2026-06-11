@@ -16,13 +16,38 @@ nav a h2 {
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.go-small-transparent {
-  opacity: 0.5;
-  transform: scale(0.5);
+.recipe-card.go-small-transparent {
+  --white: #ccc9e3;
+  --grey: #a5a5c5;
+  transform: rotate(-4deg);
   transition: all 0.3s ease-in-out;
 }
-.in-focus {
-  opacity: 1;
-  transform: scale(1);
+#recipes li:nth-of-type(2) .recipe-card.go-small-transparent {
+  transform: rotate(3deg);
+}
+#recipes li:nth-of-type(3) .recipe-card.go-small-transparent {
+  transform: rotate(-6deg);
+}
+#recipes li:nth-of-type(4) .recipe-card.go-small-transparent {
+  transform: rotate(5deg);
+}
+#recipes li:nth-of-type(5) .recipe-card.go-small-transparent {
+  transform: rotate(-8deg);
+}
+#recipes li:nth-of-type(6) .recipe-card.go-small-transparent {
+  transform: rotate(10deg);
+}
+
+main #recipes li div.in-focus {
+  --white: #f1f0fc;
+  --grey: #ccc9e3;
+  transform: scale(1) rotate(0deg);
   transition: all 0.3s ease-in-out;
+  box-shadow:
+    0 0 8px rgba(0, 0, 0, 0.03),
+    0 0 14px rgba(0, 0, 0, 0.05),
+    0 0 40px rgba(0, 0, 0, 0.06),
+    0 0 80px rgba(0, 0, 0, 0.07),
+    0 0 120px rgba(0, 0, 0, 0.08),
+    0 0 300px rgba(0, 0, 0, 0.09);
 }
