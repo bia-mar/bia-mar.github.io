@@ -1,1 +1,104 @@
-// nothing yet
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: var(--black);
+    color: var(--white);
+    gap: 20px;
+}
+
+footer ul {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer div,
+footer nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer ul li a,
+footer a:visited {
+    width:fit-content;
+    font-family: var(--Monospace-font);
+    text-decoration: underline;
+    color: #ff0000;
+    animation: rainbowTextCycle 6s linear infinite;
+}
+footer ul li a:hover {
+    text-decoration: underline;
+    color: var(--white);
+    font-family: var(--Funky-font);
+    animation: none;
+}
+
+footer li:nth-of-type(2) a {
+    animation-delay: 0.2s;
+}
+footer li:nth-of-type(3) a {
+    animation-delay: 0.4s;
+}
+footer li:nth-of-type(4) a {
+    animation-delay: 0.6s;
+}
+footer li:nth-of-type(5) a {
+    animation-delay: 0.8s;
+}
+footer li:nth-of-type(6) a {
+    animation-delay: 1s;
+}
+
+@keyframes rainbowTextCycle {
+  0%   { color: #ff0000; } /* Red */
+  17%  { color: #ff7f00; } /* Orange */
+  33%  { color: #ffff00; } /* Yellow */
+  50%  { color: #00ff00; } /* Green */
+  67%  { color: #0000ff; } /* Blue */
+  83%  { color: #4b0082; } /* Indigo */
+  100% { color: #ff0000; } /* Back to Red */
+}
+
+footer li{
+    list-style-type: none;
+}
+
+footer li::before {
+  content: "✿ ";
+  color: #ff0000;
+  animation: rainbowTextCycle 6s linear infinite;
+}
+footer li:nth-of-type(2)::before {
+    animation-delay: 0.2s;
+}
+footer li:nth-of-type(3)::before {
+    animation-delay: 0.4s;
+}
+footer li:nth-of-type(4)::before {
+    animation-delay: 0.6s;
+}
+footer li:nth-of-type(5)::before {
+    animation-delay: 0.8s;
+}
+footer li:nth-of-type(6)::before {
+    animation-delay: 1s;
+}
+footer li:hover::before {
+    animation: none;
+    color: var(--white);
+    font-family: var(--Funky-font);
+}
+
+
+footer p {
+    font-family: var(--Main-font);
+    font-style: italic;
+}
+
