@@ -38,8 +38,6 @@ main:has(#images) {
   position: relative;
   transform: translateX(-24px);
   @extend %outline;
-//  TODO: DELETE /* box-shadow: offset-x offset-y blur-radius spread-radius color; */
-//   box-shadow: 0 0 0px 200px rgba(0, 0, 0, 0.50);
 }
 
 .recipe-card div {
@@ -93,7 +91,7 @@ main:has(#images) {
 .recipe-card div:nth-of-type(2) {
   container-type: size; /* "size" allows us to use both cqw and cqh */
   width: 100%;          /* Ensure the parent fills the card space */
-  height: 100%; /* TODO: CHANGE*/
+  height: 100%;
   gap:16px;
 }
 
