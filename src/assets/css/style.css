@@ -482,7 +482,7 @@ footer p {
 /* ============================================ */
 /* RECIPE PAGE                                  */
 /* ============================================ */
-/* Local tokens — keeps this file self-contained on top of the main stylesheet. */
+/* Local tokens */
 :root {
   --hairline: 0.5px solid var(--dark-grey);
   --font-size-text-small: 0.85rem;
@@ -491,10 +491,6 @@ footer p {
 /* ============================================ */
 /* SECONDARY BUTTON                             */
 /* ============================================ */
-/* The site's secondary button: outlined, no fill (the primary button — solid —
-   is used on About / Flower Food). One class, reused everywhere a recipe page
-   needs it: the Back/Next nav, the plant species tag (→ Wikipedia) and the
-   recipe-source link. Lifts + scales on hover. */
 .btn-secondary {
   display: inline-block;
   width: -webkit-fit-content;
@@ -569,16 +565,11 @@ footer p {
   border: var(--hairline);
 }
 
-/* Recipe titles use the same script fonts as the landing cards; roman (Latin
-   titles) is italic to match. */
 .recipe-info h1.roman-font {
   font-style: italic;
 }
 
-/* Flag + tag pills row — reuses the landing card's .tags / h4.tag / .flag.
-   gap restores the spacing the card got from its wrapper; line-height: 1.5
-   matches the cards so each pill is the flag's height with its text vertically
-   centred (instead of top-aligned). */
+/* Flag + tag pills row */
 .recipe-info .tags {
   gap: 0.5rem;
   line-height: 1.5;
@@ -643,9 +634,7 @@ footer p {
   line-height: 1.4;
 }
 
-/* Plant photo + botanical-name tag at the foot of the info column — mirrors the
-   landing card: a tilted, bordered photo. The species tag sits top-left right
-   under the info card (outlined, no fill). */
+/* Plant photo + botanical-name tag at the foot of the info column*/
 .recipe-info .plant {
   margin: 0;
   display: -webkit-box;
@@ -658,10 +647,11 @@ footer p {
   gap: 1rem;
 }
 
+/* tag above the photo, directly under the info card */
 .recipe-info .plant figcaption {
   -webkit-box-ordinal-group: 0;
       -ms-flex-order: -1;
-          order: -1; /* tag above the photo, directly under the info card */
+          order: -1;
 }
 
 .recipe-info .plant img {
@@ -761,14 +751,13 @@ footer p {
   line-height: 1.5;
 }
 
-/* Mute the note label + text, but leave any image inside the note (e.g. the
-   recipe-source photo) at full opacity — opacity on .note would cap it too. */
+/* Mute the note label + text */
 .note-num,
 .note-text {
   opacity: 0.75;
 }
 
-/* Image inside a note (e.g. the recipe-source photo) — a bordered rectangle. */
+/* Image inside a note */
 .note img {
   display: block;
   width: 100%;
@@ -788,8 +777,7 @@ footer p {
   text-decoration: underline;
 }
 
-/* Prev / next recipe navigation — fixed bottom-right. The buttons themselves are
-   .btn-secondary; this only positions the pair. */
+/* Prev / next recipe navigation — fixed bottom-right. This positions the pair. */
 .recipe-nav {
   position: fixed;
   bottom: var(--nav-gap);
@@ -804,7 +792,6 @@ footer p {
 /* ============================================ */
 /* IMAGE STRIP                                  */
 /* ============================================ */
-/* Base: a plain static gallery (mobile, no-JS, or reduced motion). */
 .image-strip {
   padding: 1rem 2.5rem 4rem;
 }
@@ -837,7 +824,7 @@ footer p {
   border: var(--hairline);
 }
 
-/* A little playful tilt per photo */
+/* Tilt per photo */
 .shot:nth-child(1) img {
   -webkit-transform: rotate(3deg);
           transform: rotate(3deg);
@@ -893,7 +880,7 @@ footer p {
           transform: rotate(2.5deg);
 }
 
-/* Black pill tags over each photo */
+/* Black tags over each photo */
 .shot figcaption {
   position: absolute;
   right: 0;
@@ -1012,6 +999,45 @@ footer p {
             justify-content: center;
   }
 }
+/* ============================================ */
+/* A11Y UTILITIES                               */
+/* ============================================ */
+/* Visually hidden but readable by screen readers (e.g. "(opens in new tab)"). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip-to-content link: off-screen until focused by keyboard. */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--white);
+  border: var(--hairline);
+  font-family: var(--Monospace-font);
+  -webkit-transform: translateY(-200%);
+          transform: translateY(-200%);
+  -webkit-transition: -webkit-transform 0.15s ease;
+  transition: -webkit-transform 0.15s ease;
+  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, -webkit-transform 0.15s ease;
+}
+
+.skip-link:focus {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
 /* ----------------------------------------- */
 /* --------------- MAIN PAGE --------------- */
 /* ----------------------------------------- */
@@ -1081,7 +1107,7 @@ main:has(#images) {
           flex-direction: row;
 }
 
-.tags h4,
+.tags .tag,
 .recipe-card h3 {
   background-color: var(--grey);
   font-family: var(--Monospace-font);
@@ -1100,7 +1126,7 @@ main:has(#images) {
           flex-direction: row;
 }
 
-h4.tag {
+.tags .tag {
   background-color: var(--black);
   color: var(--white);
   text-transform: uppercase;
@@ -1282,10 +1308,6 @@ li:has(.recipe-card) {
 /* ============================================ */
 /* ABOUT PAGE                                   */
 /* ============================================ */
-/* Flower-field backdrop with the note cards over it.
-   Small screens (default, phones + iPad): a centred, scrollable column.
-   Desktop (>=1200px): cards scattered + tilted over a single 100vh meadow
-   that drifts slowly side to side. */
 .about {
   position: relative;
   min-height: 100vh;
@@ -1302,15 +1324,11 @@ li:has(.recipe-card) {
           align-items: center;
   gap: 2.5rem; /* > the float distance, so bobbing never overlaps */
   background: url("/assets/img/about.webp") center/cover no-repeat;
-  /* Drift the meadow side to side. On phones `cover` already makes the landscape
-     image wider than the screen, so there's room to pan; desktop zooms it (below). */
   -webkit-animation: biamar 10s linear infinite;
           animation: biamar 10s linear infinite;
 }
 
-/* A note card — same outlined-box look as the recipe .info-card.
-   The --grey / --white modifiers just swap the fill colour. */
-.about-card {
+.card {
   width: 100%;
   max-width: 460px;
   display: -webkit-box;
@@ -1331,39 +1349,42 @@ li:has(.recipe-card) {
           animation: float 6s ease-in-out infinite alternate;
 }
 
-.about-card--grey {
+/* alternating card backgrounds for readability; */
+.card:nth-of-type(odd) {
   background-color: var(--grey);
 }
 
-.about-card--white {
+.card:nth-of-type(even) {
   background-color: var(--white);
 }
 
 /* Offset each card's float so they bob out of sync. */
-.about-card:nth-of-type(2) {
+.card:nth-of-type(1) {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  --tilt: -4deg;
+}
+
+.card:nth-of-type(2) {
   -webkit-animation-delay: -1.5s;
           animation-delay: -1.5s;
+  --tilt: 3deg;
 }
 
-.about-card:nth-of-type(3) {
+.card:nth-of-type(3) {
   -webkit-animation-delay: -3s;
           animation-delay: -3s;
+  --tilt: -3deg;
 }
 
-.about-card:nth-of-type(4) {
+.card:nth-of-type(4) {
   -webkit-animation-delay: -4.5s;
           animation-delay: -4.5s;
+  --tilt: 6deg;
 }
 
-/* Card heading — the site's display font, like the Flower Food title. */
-.about-title {
-  font-family: var(--Main-font);
-  font-size: var(--font-size-big);
-  line-height: 1.2;
-}
-
-/* Kaomoji / ascii art, shown big like in the mock-up. Decorative — mark the
-   element aria-hidden in the markup so screen readers skip the gibberish. */
+/* Card heading + decorative ascii — both shown big in the display font. */
+.about-title,
 .about-ascii {
   font-family: var(--Main-font);
   font-size: var(--font-size-big);
@@ -1382,7 +1403,7 @@ li:has(.recipe-card) {
 }
 
 /* ✿-bulleted lists with a hanging flower marker. */
-.about-card ul {
+.card ul {
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1394,22 +1415,20 @@ li:has(.recipe-card) {
   gap: 0.75rem;
 }
 
-.about-card li {
+.card li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 0.5rem;
 }
 
-.about-card li::before {
+.card li::before {
   content: "✿";
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
 
-/* Desktop only: scatter + tilt the cards over the meadow and pan the backdrop.
-   Below this width (phones + both iPad orientations) the column above is used,
-   so the fixed-width cards never overlap and the layout stays readable. */
+/* Desktop only: scatter + tilt the cards over the meadow and pan the backdrop.*/
 @media (min-width: 1200px) {
   .about {
     display: block;
@@ -1417,36 +1436,32 @@ li:has(.recipe-card) {
     padding: 0;
     overflow: hidden;
     background-size: 150% auto; /* wider than the box → room to pan sideways */
-    background-position: bottom left;
-    /* animation inherited from the base .about rule */
+    background-position: bottom left; /* animation inherited from the base .about rule */
   }
-  .about-card {
+  .card {
     position: absolute;
     margin: 0;
   }
-  .about-card:nth-of-type(1) {
+  /* --tilt is already set per card above (it applies on every screen size) */
+  .card:nth-of-type(1) {
     top: 40%;
     left: 10%;
     width: 360px;
-    --tilt: -4deg;
   }
-  .about-card:nth-of-type(2) {
+  .card:nth-of-type(2) {
     top: 33%;
     left: 36%;
     width: 360px;
-    --tilt: 3deg;
   }
-  .about-card:nth-of-type(3) {
+  .card:nth-of-type(3) {
     top: 34%;
     right: 13%;
     width: 300px;
-    --tilt: -3deg;
   }
-  .about-card:nth-of-type(4) {
+  .card:nth-of-type(4) {
     top: 60%;
     right: 9%;
     width: 400px;
-    --tilt: 6deg;
   }
 }
 /* ---- Animations ---- */
@@ -1467,9 +1482,7 @@ li:has(.recipe-card) {
     background-position: bottom right;
   }
 }
-/* Subtle vertical float for the cards. Uses `transform` (universally supported,
-   incl. Safari) rather than the individual `translate` property, which Safari
-   animates unreliably. var(--tilt) keeps each card's angle during the float. */
+/*simple up-and-down bobbing.*/
 @-webkit-keyframes float {
   from {
     -webkit-transform: rotate(var(--tilt)) translateY(0);
@@ -1493,7 +1506,7 @@ li:has(.recipe-card) {
 /* Respect users who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   .about,
-  .about-card {
+  .card {
     -webkit-animation: none;
             animation: none;
   }

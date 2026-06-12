@@ -2,10 +2,6 @@
 /* ABOUT PAGE                                   */
 /* ============================================ */
 
-/* Flower-field backdrop with the note cards over it.
-   Small screens (default, phones + iPad): a centred, scrollable column.
-   Desktop (>=1200px): cards scattered + tilted over a single 100vh meadow
-   that drifts slowly side to side. */
 .about {
   position: relative;
   min-height: 100vh;
@@ -15,14 +11,10 @@
   align-items: center;
   gap: 2.5rem;                /* > the float distance, so bobbing never overlaps */
   background: url("/assets/img/about.webp") center / cover no-repeat;
-  /* Drift the meadow side to side. On phones `cover` already makes the landscape
-     image wider than the screen, so there's room to pan; desktop zooms it (below). */
   animation: biamar 10s linear infinite;
 }
 
-/* A note card — same outlined-box look as the recipe .info-card.
-   The --grey / --white modifiers just swap the fill colour. */
-.about-card {
+.card {
   width: 100%;
   max-width: 460px;
   display: flex;
@@ -36,23 +28,18 @@
   animation: float 6s ease-in-out infinite alternate;
 }
 
-.about-card--grey  { background-color: var(--grey); }
-.about-card--white { background-color: var(--white); }
+/* alternating card backgrounds for readability; */
+.card:nth-of-type(odd)  { background-color: var(--grey); }
+.card:nth-of-type(even) { background-color: var(--white); }
 
 /* Offset each card's float so they bob out of sync. */
-.about-card:nth-of-type(2) { animation-delay: -1.5s; }
-.about-card:nth-of-type(3) { animation-delay: -3s;   }
-.about-card:nth-of-type(4) { animation-delay: -4.5s; }
+.card:nth-of-type(1) { animation-delay: 0s;     --tilt: -4deg; }
+.card:nth-of-type(2) { animation-delay: -1.5s;  --tilt: 3deg;  }
+.card:nth-of-type(3) { animation-delay: -3s;    --tilt: -3deg; }
+.card:nth-of-type(4) { animation-delay: -4.5s;  --tilt: 6deg;  }
 
-/* Card heading — the site's display font, like the Flower Food title. */
-.about-title {
-  font-family: var(--Main-font);
-  font-size: var(--font-size-big);
-  line-height: 1.2;
-}
-
-/* Kaomoji / ascii art, shown big like in the mock-up. Decorative — mark the
-   element aria-hidden in the markup so screen readers skip the gibberish. */
+/* Card heading + decorative ascii — both shown big in the display font. */
+.about-title,
 .about-ascii {
   font-family: var(--Main-font);
   font-size: var(--font-size-big);
@@ -67,26 +54,24 @@
 }
 
 /* ✿-bulleted lists with a hanging flower marker. */
-.about-card ul {
+.card ul {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.about-card li {
+.card li {
   display: flex;
   gap: 0.5rem;
 }
 
-.about-card li::before {
+.card li::before {
   content: "✿";
   flex-shrink: 0;
 }
 
-/* Desktop only: scatter + tilt the cards over the meadow and pan the backdrop.
-   Below this width (phones + both iPad orientations) the column above is used,
-   so the fixed-width cards never overlap and the layout stays readable. */
+/* Desktop only: scatter + tilt the cards over the meadow and pan the backdrop.*/
 @media (min-width: 1200px) {
   .about {
     display: block;
@@ -94,19 +79,19 @@
     padding: 0;
     overflow: hidden;
     background-size: 150% auto; /* wider than the box → room to pan sideways */
-    background-position: bottom left;
-    /* animation inherited from the base .about rule */
+    background-position: bottom left; /* animation inherited from the base .about rule */
   }
 
-  .about-card {
+  .card {
     position: absolute;
     margin: 0;
   }
 
-  .about-card:nth-of-type(1) { top: 40%; left: 10%;  width: 360px; --tilt: -4deg; }
-  .about-card:nth-of-type(2) { top: 33%; left: 36%;  width: 360px; --tilt: 3deg;  }
-  .about-card:nth-of-type(3) { top: 34%; right: 13%; width: 300px; --tilt: -3deg; }
-  .about-card:nth-of-type(4) { top: 60%; right: 9%;  width: 400px; --tilt: 6deg;  }
+  /* --tilt is already set per card above (it applies on every screen size) */
+  .card:nth-of-type(1) { top: 40%; left: 10%;  width: 360px; }
+  .card:nth-of-type(2) { top: 33%; left: 36%;  width: 360px; }
+  .card:nth-of-type(3) { top: 34%; right: 13%; width: 300px; }
+  .card:nth-of-type(4) { top: 60%; right: 9%;  width: 400px; }
 }
 
 /* ---- Animations ---- */
@@ -117,10 +102,8 @@
   100% { background-position: bottom right; }
 }
 
-/* Subtle vertical float for the cards. Uses `transform` (universally supported,
-   incl. Safari) rather than the individual `translate` property, which Safari
-   animates unreliably. var(--tilt) keeps each card's angle during the float. */
-@keyframes float {
+/*simple up-and-down bobbing.*/
+@keyframes float { 
   from { transform: rotate(var(--tilt)) translateY(0); }
   to   { transform: rotate(var(--tilt)) translateY(-34px); }
 }
@@ -128,7 +111,7 @@
 /* Respect users who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   .about,
-  .about-card {
+  .card {
     animation: none;
   }
 }

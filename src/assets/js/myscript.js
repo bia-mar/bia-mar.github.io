@@ -1,80 +1,76 @@
-// Pin each recipe by its BOTTOM edge so tall recipes scroll to read first, then
-// pin once their end is reached (nothing is ever clipped). This just measures the
-// recipe height and exposes it as --pin-top; the glide itself is JavaScript-driven.
-(function () {
-  function setPinOffset() {
-    var page = document.querySelector(".recipe-page");
-    if (!page) return;
-    // 0 for short recipes (pin by top); negative for tall ones (pin by bottom).
-    var offset = Math.min(0, window.innerHeight - page.offsetHeight);
-    document.documentElement.style.setProperty("--pin-top", offset + "px");
+// JUST RECIPE PAGES --------------------------------------------------------------
+function recipePageThings() { //only runs when something calls
+
+
+  var recipe = document.querySelector('.recipe-page'); // Looks for an element with class "recipe-page"
+
+  function setPinOffset() { //How far to nudge the pinned recipe. 
+    if (!recipe) return; //if there's no recipe element on the page, give up (error prevention).
+          
+    var offset = Math.min(0, window.innerHeight - recipe.offsetHeight); //Screen height minus recipe height. (positive = recipe shorter; Negative = recipe taller)
+    document.documentElement.style.setProperty('--pin-top', offset + 'px'); //short recipes pin from the top (offset 0); tall recipes get a negative offset so they pin from the bottom and nothing gets cut off.
   }
 
-  window.addEventListener("resize", setPinOffset);
-  window.addEventListener("load", setPinOffset);
-  setPinOffset();
-})();
+  window.addEventListener('resize', setPinOffset); //run setPinOffset if the window is resized or there is loading
+  window.addEventListener('load', setPinOffset);
 
-// Scroll-driven image glide: the photos glide up over the pinned recipe.
-// Pace: the strip is sized to match the photo track, so the glide tracks scrolling
-// ~1:1 — a calm, consistent speed on every recipe. (Before, the fixed 220vh strip
-// made the photos move ~6x faster than the scroll, and faster still the more
-// photos a recipe had.) One update per frame via requestAnimationFrame; the
-// transform is a compositor-friendly translate3d.
-(function () {
-  // Run wherever motion is allowed (mobile + desktop).
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setPinOffset(); //call it once right now
 
-  var strip = document.querySelector('.image-strip');
-  var track = document.querySelector('.image-track');
-  if (!strip || !track) return;
 
-  var ticking = false;
+  // glide the photos ------------------------------------------
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; //if the user has set a preference for reduced motion, skip this whole section. (accessibility)
 
-  // Layout cached here, measured only on load/resize — never on the scroll path.
-  var pinned = 0; // scroll distance over which the glide runs
-  var travel = 0; // distance the track has to move
-  var stripTop = 0; // the strip's position in the document (stable while scrolling)
+  var strip = document.querySelector('.image-strip'); //the container that pins to the screen and holds the track
+  var track = document.querySelector('.image-track'); //the container that holds the photos and moves up and down as you scroll. It is inside the strip, so it can be pinned to the screen while it moves.
+  if (!strip || !track) return; //if there is no strip or track, give up (error prevention).
 
-  // Make the strip exactly as tall as the photo track (so the pinned scroll
-  // distance equals the track's travel -> photos move at scroll speed), then read
-  // the geometry once. These reads force layout, so we keep them out of update().
-  function measure() {
-    strip.style.height = track.scrollHeight + 'px';
-    var vh = window.innerHeight;
-    pinned = strip.offsetHeight - vh;
-    travel = Math.max(0, track.scrollHeight - vh);
-    stripTop = strip.getBoundingClientRect().top + window.scrollY;
+  var pinned = 0;    // how long the glide lasts, in scrolled pixels (starts at 0)
+  var travel = 0;    // how far the photos have to travel
+  var stripTop = 0;  // where the strip starts on the page
+
+  function measure() { // Defines the function that takes those measurements.
+
+    strip.style.height = track.scrollHeight + 'px'; //track.scrollHeight is the full height of the photo row. This line makes the strip exactly that tall. one pixel of scrolling = one pixel of photo movement (a calm, even speed).
+
+    var screenHeight = window.innerHeight; //Store the screen height in a short-named box so the next lines read more easily.
+
+    pinned = strip.offsetHeight - screenHeight; //How much scrolling the glide should last for = the strip's height minus one screen.
+    travel = Math.max(0, track.scrollHeight - screenHeight); //How far the photos have to travel = the track's height minus one screen.
+    stripTop = strip.getBoundingClientRect().top + window.scrollY; //Where the strip starts on the page = the distance from the top of the strip to the top of the screen, plus how far we've scrolled down. (getBoundingClientRect().top is how far the strip is from the top of the screen right now; add scrollY to get how far it is from the top of the whole page.)
   }
 
-  // Per frame: only read window.scrollY (no layout reflow) and set the transform.
-  // Equivalent to the old getBoundingClientRect math: rect.top === stripTop - scrollY.
-  function update() {
-    ticking = false;
-    var progress = pinned > 0 ? (window.scrollY - stripTop) / pinned : 0;
-    progress = progress < 0 ? 0 : progress > 1 ? 1 : progress;
-    track.style.transform = 'translate3d(0,' + (-progress * travel) + 'px,0)';
+  function movePhotos() { //function that actually slides the photos.
+  
+    var progress = pinned > 0 ? (window.scrollY - stripTop) / pinned : 0;// How far through the glide are we, from 0 to 1? = how far we've scrolled past the start of the strip, divided by how long the glide should last. If pinned is 0 (the strip is shorter than the screen, so no pinning/glide is needed), progress is just 0.
+    if (progress < 0) progress = 0; // If we haven't reached the strip yet, progress is 0.
+    if (progress > 1) progress = 1; // If we've scrolled past the end of the glide, progress is 1.
+  
+    track.style.transform = 'translate3d(0,' + (-progress * travel) + 'px,0)'; // Move the photos up by a percentage of the total travel distance, based on how far through the glide we are. 
   }
 
-  function onScroll() {
-    if (!ticking) {
-      ticking = true;
-      window.requestAnimationFrame(update);
+  var waiting = false; // The "only do this once per frame" guard. A true/false box (a "flag"). false = "not currently waiting."
+  function onScroll() { // The function that runs when the user scrolls, but only actually does something once per animation frame (see requestAnimationFrame below).
+    if (!waiting) { 
+      waiting = true; 
+      requestAnimationFrame(function () { 
+        waiting = false;
+        movePhotos();
+      });
     }
   }
 
-  // Photo sizes are vw/vh-based, so the track height changes with the viewport —
-  // re-measure on resize/load, then repaint.
-  function refresh() {
+  function refresh() { // A little combo: re-take the measurements, then redraw once. Used whenever the layout might have changed.
     measure();
-    update();
+    movePhotos();
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', refresh);
+  window.addEventListener('scroll', onScroll, { passive: true }); // When the user scrolls, call onScroll. The passive: true option is a hint to the browser that this scroll handler won't call preventDefault().
+
+  window.addEventListener('resize', refresh); // When the window is resized or loading call refresh to re-measure and redraw.
   window.addEventListener('load', refresh);
-  refresh();
-})();
+
+  refresh(); // Call it once right now to set everything up.
+}
 
 
 
@@ -229,11 +225,14 @@ function landingPageThings() {
 
 
 
-// ARE WE IN THE INDEX PAGE???
+// WHICH PAGE ARE WE ON???
 document.addEventListener('DOMContentLoaded', function() {
   var isLandingPage = document.getElementById('recipes'); //if there is a recipes in this page this will be ==True
+  var isRecipePage = document.querySelector('.recipe-page'); //a single recipe page has the .recipe-page layout
 
   if (isLandingPage) { //if True
     landingPageThings();
+  } else if (isRecipePage) { //otherwise, if it's one recipe page
+    recipePageThings();
   }
 });

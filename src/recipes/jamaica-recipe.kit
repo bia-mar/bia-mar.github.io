@@ -1,5 +1,8 @@
 <!-- @import ../head -->
+  <title>Hibiscus Tacos — Flower Food</title>
+</head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- @import ../header -->
 
@@ -7,7 +10,7 @@
   the strip's photos glide bottom -> top (CSS scroll-timeline). -->
   <div class="recipe-pin">
 
-    <main class="recipe-page">
+    <main class="recipe-page" id="main">
 
       <!-- Info -->
       <section class="recipe-info">
@@ -15,8 +18,8 @@
 
         <div class="tags">
           <img src="/assets/img/flag/mx.svg" alt="Flag of Mexico" class="flag">
-          <h4 class="tag">Savory</h4>
-          <h4 class="tag">45min</h4>
+          <span class="tag">Savory</span>
+          <span class="tag">45min</span>
         </div>
 
         <div class="info-card">
@@ -44,7 +47,7 @@
 
         <figure class="plant">
           <img src="/assets/img/flower/jamaica.webp" alt="Hibiscus sabdariffa flower">
-          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Hibiscus_sabdariffa" target="_blank" rel="noopener">Hibiscus sabdariffa</a></figcaption>
+          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Hibiscus_sabdariffa" target="_blank" rel="noopener">Hibiscus sabdariffa<span class="sr-only"> (opens in new tab)</span></a></figcaption>
         </figure>
       </section>
 
@@ -86,7 +89,7 @@
           <li class="note">
             <span class="note-num">Recipe & Source:</span>
             <img src="/assets/img/recipe-thumb/jamaica-thumb.webp" alt="Hibiscus tacos" loading="lazy">
-            <p class="note-text"> <a class="btn-secondary" href="https://healthysimpleyum.com/jamaica-tacos-hibiscus-tacos/" target="_blank" rel="noopener">Healthy Simple Yum</a></p>
+            <p class="note-text"> <a class="btn-secondary" href="https://healthysimpleyum.com/jamaica-tacos-hibiscus-tacos/" target="_blank" rel="noopener">Healthy Simple Yum<span class="sr-only"> (opens in new tab)</span></a></p>
           </li>
           <li class="note">
             <span class="note-num">Tips:</span>
@@ -103,8 +106,8 @@
 
     </main>
     <nav class="recipe-nav" aria-label="Recipe navigation">
-      <a class="btn-secondary" href="/recipes/osmanthus-recipe.html">← Back</a>
-      <a class="btn-secondary" href="/recipes/sesbania-recipe.html">Next →</a>
+      <a class="btn-secondary" href="/recipes/osmanthus-recipe.html"><span aria-hidden="true">←</span> Back</a>
+      <a class="btn-secondary" href="/recipes/sesbania-recipe.html">Next <span aria-hidden="true">→</span></a>
     </nav>
 
     <!-- Image strip — a scroll-through zone; the photos glide bottom -> top -->

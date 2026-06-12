@@ -2,7 +2,7 @@
 /* RECIPE PAGE                                  */
 /* ============================================ */
 
-/* Local tokens — keeps this file self-contained on top of the main stylesheet. */
+/* Local tokens */
 :root {
   --hairline: 0.5px solid var(--dark-grey);
   --font-size-text-small: 0.85rem;
@@ -12,10 +12,6 @@
 /* SECONDARY BUTTON                             */
 /* ============================================ */
 
-/* The site's secondary button: outlined, no fill (the primary button — solid —
-   is used on About / Flower Food). One class, reused everywhere a recipe page
-   needs it: the Back/Next nav, the plant species tag (→ Wikipedia) and the
-   recipe-source link. Lifts + scales on hover. */
 .btn-secondary {
   display: inline-block;
   width: fit-content;
@@ -75,16 +71,11 @@
   border: var(--hairline);
 }
 
-/* Recipe titles use the same script fonts as the landing cards; roman (Latin
-   titles) is italic to match. */
 .recipe-info h1.roman-font {
   font-style: italic;
 }
 
-/* Flag + tag pills row — reuses the landing card's .tags / h4.tag / .flag.
-   gap restores the spacing the card got from its wrapper; line-height: 1.5
-   matches the cards so each pill is the flag's height with its text vertically
-   centred (instead of top-aligned). */
+/* Flag + tag pills row */
 .recipe-info .tags {
   gap: 0.5rem;
   line-height: 1.5;
@@ -137,9 +128,7 @@
   line-height: 1.4;
 }
 
-/* Plant photo + botanical-name tag at the foot of the info column — mirrors the
-   landing card: a tilted, bordered photo. The species tag sits top-left right
-   under the info card (outlined, no fill). */
+/* Plant photo + botanical-name tag at the foot of the info column*/
 .recipe-info .plant {
   margin: 0;
   display: flex;
@@ -147,8 +136,9 @@
   gap: 1rem;
 }
 
+/* tag above the photo, directly under the info card */
 .recipe-info .plant figcaption {
-  order: -1;   /* tag above the photo, directly under the info card */
+  order: -1;   
 }
 
 .recipe-info .plant img {
@@ -214,14 +204,13 @@
   line-height: 1.5;
 }
 
-/* Mute the note label + text, but leave any image inside the note (e.g. the
-   recipe-source photo) at full opacity — opacity on .note would cap it too. */
+/* Mute the note label + text */
 .note-num,
 .note-text {
   opacity: 0.75;
 }
 
-/* Image inside a note (e.g. the recipe-source photo) — a bordered rectangle. */
+/* Image inside a note */
 .note img {
   display: block;
   width: 100%;
@@ -240,8 +229,7 @@
   text-decoration: underline;
 }
 
-/* Prev / next recipe navigation — fixed bottom-right. The buttons themselves are
-   .btn-secondary; this only positions the pair. */
+/* Prev / next recipe navigation — fixed bottom-right. This positions the pair. */
 .recipe-nav {
   position: fixed;
   bottom: var(--nav-gap);
@@ -255,7 +243,6 @@
 /* IMAGE STRIP                                  */
 /* ============================================ */
 
-/* Base: a plain static gallery (mobile, no-JS, or reduced motion). */
 .image-strip {
   padding: 1rem 2.5rem 4rem;
 }
@@ -280,7 +267,7 @@
   border: var(--hairline);
 }
 
-/* A little playful tilt per photo */
+/* Tilt per photo */
 .shot:nth-child(1) img { transform: rotate(3deg); }
 .shot:nth-child(2) img { transform: rotate(-2.5deg); }
 .shot:nth-child(3) img { transform: rotate(4.5deg); }
@@ -293,7 +280,7 @@
 .shot:nth-child(10) img { transform: rotate(-3deg); }
 .shot:nth-child(11) img { transform: rotate(2.5deg); }
 
-/* Black pill tags over each photo */
+/* Black tags over each photo */
 .shot figcaption {
   position: absolute;
   right: 0;
@@ -402,4 +389,39 @@
     right: 0;
     justify-content: center;
   }
+}
+
+/* ============================================ */
+/* A11Y UTILITIES                               */
+/* ============================================ */
+
+/* Visually hidden but readable by screen readers (e.g. "(opens in new tab)"). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip-to-content link: off-screen until focused by keyboard. */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--white);
+  border: var(--hairline);
+  font-family: var(--Monospace-font);
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }

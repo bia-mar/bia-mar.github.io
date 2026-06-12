@@ -1,5 +1,8 @@
 <!-- @import ../head -->
+  <title>Elderflower Fritters — Flower Food</title>
+</head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- @import ../header -->
 
@@ -7,7 +10,7 @@
   the strip's photos glide bottom -> top (CSS scroll-timeline). -->
   <div class="recipe-pin">
 
-    <main class="recipe-page">
+    <main class="recipe-page" id="main">
 
       <!-- Info -->
       <section class="recipe-info">
@@ -15,8 +18,8 @@
 
         <div class="tags">
           <img src="/assets/img/flag/de.svg" alt="Flag of Germany" class="flag">
-          <h4 class="tag">Sweet</h4>
-          <h4 class="tag">25min</h4>
+          <span class="tag">Sweet</span>
+          <span class="tag">25min</span>
         </div>
 
         <div class="info-card">
@@ -44,7 +47,7 @@
 
         <figure class="plant">
           <img src="/assets/img/flower/elderflower.webp" alt="Sambucus nigra flower">
-          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Sambucus_nigra" target="_blank" rel="noopener">Sambucus nigra</a></figcaption>
+          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Sambucus_nigra" target="_blank" rel="noopener">Sambucus nigra<span class="sr-only"> (opens in new tab)</span></a></figcaption>
         </figure>
       </section>
 
@@ -94,7 +97,7 @@
           <li class="note">
             <span class="note-num">Recipe & Source:</span>
             <img src="/assets/img/recipe-thumb/elderflower-thumb.webp" alt="Elderflower fritters" loading="lazy">
-            <p class="note-text"> <a class="btn-secondary" href="https://www.thebearandthefox.com/frittierte-holunderbluten-elderflower-fritters/" target="_blank" rel="noopener">The Bear &amp; The Fox</a></p>
+            <p class="note-text"> <a class="btn-secondary" href="https://www.thebearandthefox.com/frittierte-holunderbluten-elderflower-fritters/" target="_blank" rel="noopener">The Bear &amp; The Fox<span class="sr-only"> (opens in new tab)</span></a></p>
           </li>
           <li class="note">
             <span class="note-num">Tips:</span>
@@ -114,8 +117,8 @@
 
     </main>
     <nav class="recipe-nav" aria-label="Recipe navigation">
-      <a class="btn-secondary" href="/recipes/faloodeh-recipe.html">← Back</a>
-      <a class="btn-secondary" href="/recipes/violet-recipe.html">Next →</a>
+      <a class="btn-secondary" href="/recipes/faloodeh-recipe.html"><span aria-hidden="true">←</span> Back</a>
+      <a class="btn-secondary" href="/recipes/violet-recipe.html">Next <span aria-hidden="true">→</span></a>
     </nav>
 
     <!-- Image strip — a scroll-through zone; the photos glide bottom -> top -->

@@ -1,5 +1,8 @@
 <!-- @import ../head -->
+  <title>Sesbania Flower Salad — Flower Food</title>
+</head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- @import ../header -->
 
@@ -7,7 +10,7 @@
   the strip's photos glide bottom -> top (CSS scroll-timeline). -->
   <div class="recipe-pin">
 
-    <main class="recipe-page">
+    <main class="recipe-page" id="main">
 
       <!-- Info -->
       <section class="recipe-info">
@@ -15,8 +18,8 @@
 
         <div class="tags">
           <img src="/assets/img/flag/th.svg" alt="Flag of Thailand" class="flag">
-          <h4 class="tag">Spicy</h4>
-          <h4 class="tag">30min</h4>
+          <span class="tag">Spicy</span>
+          <span class="tag">30min</span>
         </div>
 
         <div class="info-card">
@@ -47,7 +50,7 @@
 
         <figure class="plant">
           <img src="/assets/img/flower/sesbania.webp" alt="Sesbania grandiflora flower">
-          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Sesbania_grandiflora" target="_blank" rel="noopener">Sesbania grandiflora</a></figcaption>
+          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Sesbania_grandiflora" target="_blank" rel="noopener">Sesbania grandiflora<span class="sr-only"> (opens in new tab)</span></a></figcaption>
         </figure>
       </section>
 
@@ -93,7 +96,7 @@
           <li class="note">
             <span class="note-num">Recipe & Source:</span>
             <img src="/assets/img/recipe-thumb/sesbania-thumb.webp" alt="Sesbania flower salad" loading="lazy">
-            <p class="note-text"> <a class="btn-secondary" href="https://cookpad-com.translate.goog/th/recipes/17081703?_x_tr_sl=th&amp;_x_tr_tl=en&amp;_x_tr_hl=en" target="_blank" rel="noopener">Cookpad Thailand</a></p>
+            <p class="note-text"> <a class="btn-secondary" href="https://cookpad-com.translate.goog/th/recipes/17081703?_x_tr_sl=th&amp;_x_tr_tl=en&amp;_x_tr_hl=en" target="_blank" rel="noopener">Cookpad Thailand<span class="sr-only"> (opens in new tab)</span></a></p>
           </li>
           <li class="note">
             <span class="note-num">Tips:</span>
@@ -110,8 +113,8 @@
 
     </main>
     <nav class="recipe-nav" aria-label="Recipe navigation">
-      <a class="btn-secondary" href="/recipes/jamaica-recipe.html">← Back</a>
-      <a class="btn-secondary" href="/recipes/faloodeh-recipe.html">Next →</a>
+      <a class="btn-secondary" href="/recipes/jamaica-recipe.html"><span aria-hidden="true">←</span> Back</a>
+      <a class="btn-secondary" href="/recipes/faloodeh-recipe.html">Next <span aria-hidden="true">→</span></a>
     </nav>
 
     <!-- Image strip — a scroll-through zone; the photos glide bottom -> top -->

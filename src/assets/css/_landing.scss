@@ -47,7 +47,7 @@ main:has(#images) {
   flex-direction: row;
 }
 
-.tags h4,
+.tags .tag,
 .recipe-card h3 {
   background-color: var(--grey);
   font-family: var(--Monospace-font);
@@ -61,7 +61,7 @@ main:has(#images) {
   flex-direction: row;
 }
 
-h4.tag {
+.tags .tag {
     background-color: var(--black);
     color: var(--white);
     text-transform: uppercase;

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Flower Food</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/assets/css/style.min.css">
-</head><body>
+  <title>Osmanthus Jelly — Flower Food</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
 <header>
     <a href="/index.html" aria-label="go to homepage">
@@ -16,7 +18,7 @@
   the strip's photos glide bottom -> top (CSS scroll-timeline). -->
   <div class="recipe-pin">
 
-    <main class="recipe-page">
+    <main class="recipe-page" id="main">
 
       <!-- Info -->
       <section class="recipe-info">
@@ -24,8 +26,8 @@
 
         <div class="tags">
           <img src="/assets/img/flag/cn.svg" alt="Flag of China" class="flag">
-          <h4 class="tag">Sweet</h4>
-          <h4 class="tag">3h</h4>
+          <span class="tag">Sweet</span>
+          <span class="tag">3h</span>
         </div>
 
         <div class="info-card">
@@ -50,7 +52,7 @@
 
         <figure class="plant">
           <img src="/assets/img/flower/osmanthus.webp" alt="Osmanthus fragrans flower">
-          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Osmanthus_fragrans" target="_blank" rel="noopener">Osmanthus fragrans</a></figcaption>
+          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Osmanthus_fragrans" target="_blank" rel="noopener">Osmanthus fragrans<span class="sr-only"> (opens in new tab)</span></a></figcaption>
         </figure>
       </section>
 
@@ -92,7 +94,7 @@
           <li class="note">
             <span class="note-num">Recipe & Source:</span>
             <img src="/assets/img/recipe-thumb/osmanthus-thumb.webp" alt="Osmanthus jelly" loading="lazy">
-            <p class="note-text"> <a class="btn-secondary" href="https://www.greedygirlgourmet.com/osmanthus-flower-tea-konnyaku-jelly-%E6%A1%82%E8%8A%B1%E7%B3%95-gui-hua-gao-recipe/" target="_blank" rel="noopener">greedygirlgourmet.com</a></p>
+            <p class="note-text"> <a class="btn-secondary" href="https://www.greedygirlgourmet.com/osmanthus-flower-tea-konnyaku-jelly-%E6%A1%82%E8%8A%B1%E7%B3%95-gui-hua-gao-recipe/" target="_blank" rel="noopener">greedygirlgourmet.com<span class="sr-only"> (opens in new tab)</span></a></p>
           </li>
           <li class="note">
             <span class="note-num">Safety note:</span>
@@ -116,8 +118,8 @@
 
     </main>
     <nav class="recipe-nav" aria-label="Recipe navigation">
-      <a class="btn-secondary" href="/recipes/violet-recipe.html">← Back</a>
-      <a class="btn-secondary" href="/recipes/jamaica-recipe.html">Next →</a>
+      <a class="btn-secondary" href="/recipes/violet-recipe.html"><span aria-hidden="true">←</span> Back</a>
+      <a class="btn-secondary" href="/recipes/jamaica-recipe.html">Next <span aria-hidden="true">→</span></a>
     </nav>
 
     <!-- Image strip — a scroll-through zone; the photos glide bottom -> top -->

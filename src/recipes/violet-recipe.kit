@@ -1,5 +1,8 @@
 <!-- @import ../head -->
+<title>Violettes de Toulouse — Flower Food</title>
+</head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- @import ../header -->
 
@@ -7,7 +10,7 @@
   the strip's photos glide bottom -> top (CSS scroll-timeline). -->
   <div class="recipe-pin">
 
-    <main class="recipe-page">
+    <main class="recipe-page" id="main"> <!-- The main content of the page, including the recipe and notes. The skip link at the top points here. -->
 
       <!-- Info -->
       <section class="recipe-info">
@@ -15,8 +18,8 @@
 
         <div class="tags">
           <img src="/assets/img/flag/fr.svg" alt="Flag of France" class="flag">
-          <h4 class="tag">Sweet</h4>
-          <h4 class="tag">48h</h4>
+          <span class="tag">Sweet</span>
+          <span class="tag">48h</span>
         </div>
 
         <div class="info-card">
@@ -39,7 +42,7 @@
 
         <figure class="plant">
           <img src="/assets/img/flower/violet.webp" alt="Viola alba subsp. dehnardtii flower">
-          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Viola_alba" target="_blank" rel="noopener">Viola alba</a></figcaption>
+          <figcaption><a class="btn-secondary" href="https://en.wikipedia.org/wiki/Viola_alba" target="_blank" rel="noopener">Viola alba<span class="sr-only"> (opens in new tab)</span></a></figcaption>
         </figure>
       </section>
 
@@ -81,7 +84,7 @@
           <li class="note">
             <span class="note-num">Recipe & Source:</span>
             <img src="/assets/img/recipe-thumb/violet-thumb.webp" alt="Crystallised violets" loading="lazy">
-            <p class="note-text"><a class="btn-secondary" href="https://www.luckysophie.com/2021/03/faire-ses-violettes-cristallisees-au-sucre.html" target="_blank" rel="noopener">luckysophie.com</a></p>
+            <p class="note-text"><a class="btn-secondary" href="https://www.luckysophie.com/2021/03/faire-ses-violettes-cristallisees-au-sucre.html" target="_blank" rel="noopener">luckysophie.com<span class="sr-only"> (opens in new tab)</span></a></p>
           </li>
           <li class="note">
             <span class="note-num">Fun fact:</span>
@@ -100,44 +103,44 @@
     </main>
 
     <nav class="recipe-nav" aria-label="Recipe navigation">
-      <a class="btn-secondary" href="/recipes/elderflower-recipe.html">← Back</a>
-      <a class="btn-secondary" href="/recipes/osmanthus-recipe.html">Next →</a>
+      <a class="btn-secondary" href="/recipes/elderflower-recipe.html"><span aria-hidden="true">←</span> Back</a>
+      <a class="btn-secondary" href="/recipes/osmanthus-recipe.html">Next <span aria-hidden="true">→</span></a>
     </nav>
 
     <!-- Image strip — a scroll-through zone; the photos glide bottom -> top -->
-    <div class="image-strip">
-      <div class="strip-stage">
-        <div class="image-track">
+    <div class="image-strip"> <!-- The scroll-through image strip at the bottom of the page. The photos glide bottom -> top on desktop, and are scrollable on mobile. -->
+      <div class="strip-stage"> <!-- The "stage" for the image strip. This is the element that scroll-timeline is attached to, and it defines the scroll area for the animation. It also serves as a viewport, with overflow hidden, so only one photo is visible at a time on desktop. -->
+        <div class="image-track"> <!-- The "track" for the image strip. This is the element that is actually animated by scroll-timeline. It contains all the photos in a vertical stack, and moves up as you scroll down the page, creating the effect of the photos gliding bottom -> top. -->
           <figure class="shot">
-            <img src="/assets/img/violete-recipe/1.webp" alt="Crystallised violets — photo 1" loading="lazy">
+            <img src="/assets/img/violete-recipe/1.webp" alt="A handful of freshly picked violets" loading="lazy">
             <figcaption><span class="shot-step">Violets</span><span class="shot-legend">Picked on a dry day</span></figcaption>
           </figure>
           <figure class="shot">
-            <img src="/assets/img/violete-recipe/2.webp" alt="Crystallised violets — photo 2" loading="lazy">
+            <img src="/assets/img/violete-recipe/2.webp" alt="Fresh violets being rinsed clean" loading="lazy">
             <figcaption><span class="shot-step">Step 1</span><span class="shot-legend">Clean fresh violets</span></figcaption>
           </figure>
           <figure class="shot">
-            <img src="/assets/img/violete-recipe/3.webp" alt="Crystallised violets — photo 3" loading="lazy">
+            <img src="/assets/img/violete-recipe/3.webp" alt="An egg white being lightly beaten with a fork" loading="lazy">
             <figcaption><span class="shot-step">Step 2</span><span class="shot-legend">Beat egg white lightly</span></figcaption>
           </figure>
           <figure class="shot">
-            <img src="/assets/img/violete-recipe/4.webp" alt="Crystallised violets — photo 4" loading="lazy">
+            <img src="/assets/img/violete-recipe/4.webp" alt="A violet being brushed with egg white" loading="lazy">
             <figcaption><span class="shot-step">Step 3</span><span class="shot-legend">Brush with egg white</span></figcaption>
           </figure>
           <figure class="shot">
-            <img src="/assets/img/violete-recipe/5.webp" alt="Crystallised violets — photo 5" loading="lazy">
+            <img src="/assets/img/violete-recipe/5.webp" alt="A violet being coated in caster sugar" loading="lazy">
             <figcaption><span class="shot-step">Step 4</span><span class="shot-legend">Coat generously with sugar</span></figcaption>
           </figure>
           <figure class="shot">
-            <img src="/assets/img/violete-recipe/6.webp" alt="Crystallised violets — photo 6" loading="lazy">
+            <img src="/assets/img/violete-recipe/6.webp" alt="Sugar-coated violets drying on a tray" loading="lazy">
             <figcaption><span class="shot-step">Step 5</span><span class="shot-legend">Dry until crisp</span></figcaption>
           </figure>
           <figure class="shot">
-            <img src="/assets/img/violete-recipe/7.webp" alt="Crystallised violets — photo 7" loading="lazy">
+            <img src="/assets/img/violete-recipe/7.webp" alt="Finished crystallised violets in a jar" loading="lazy">
             <figcaption><span class="shot-step">Step 6</span><span class="shot-legend">Store in airtight container or use immediately</span></figcaption>
           </figure>
           <figure class="shot">
-            <img src="/assets/img/violete-recipe/8.webp" alt="Crystallised violets — photo 8" loading="lazy">
+            <img src="/assets/img/violete-recipe/8.webp" alt="Crystallised violets, the floral symbol of Toulouse" loading="lazy">
             <figcaption><span class="shot-step">Toulouse, France</span><span class="shot-legend">Violets as the symbol of the city </span></figcaption>
           </figure>
           <figure class="end-image">
